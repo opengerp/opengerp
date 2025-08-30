@@ -1,0 +1,71 @@
+{
+  "name": "opengerp/opengerp",
+  "description": "opengerp core open source ERP system web based ",
+  "authors": [
+    {
+      "name": "Carlo Centrone",
+      "email": "carlo.centrone@gerp.it"
+    }
+  ],
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-0": {
+      "Opengerp": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.3",
+    "ext-mysqli": "*",
+    "ext-curl": "*",
+    "ext-gd": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-simplexml": "*",
+    "ext-fileinfo": "*",
+    "ext-libxml": "*",
+    "ext-dom": "*",
+    "ext-ftp": "*",
+    "ext-odbc": "*",
+    "ext-iconv": "*",
+    "ext-sockets": "*",
+    "symfony/http-foundation": "^5.4",
+    "symfony/expression-language": "5.4.*",
+    "symfony/mailer": "^5.4",
+    "symfony/mime": "^5.4",
+    "symfony/var-exporter": "^5.4",
+    "symfony/event-dispatcher": "^5.4",
+    "symfony/cache": "^5.4",
+    "symfony/translation": "5.4.*",
+    "symfony/yaml": "5.4.*",
+    "doctrine/lexer": "^2.1",
+    "doctrine/instantiator": "^1.5",
+    "psr/cache": "^1",
+    "smarty/smarty": "v3.1.39",
+    "studio-42/elfinder": "2.1.*",
+    "opengerp/tcpdf": "dev-main",
+    "spipu/html2pdf": "5.2.*",
+    "ckeditor/ckeditor": "4.11.*",
+    "eluceo/ical": "0.16.1",
+    "dragonmantank/cron-expression": "*",
+    "guzzlehttp/guzzle": "^7.3",
+    "setasign/fpdi": "*",
+    "setasign/fpdf": "*",
+    "select2/select2": "^4.0",
+    "michelf/php-markdown": "^2.0",
+    "php-debugbar/php-debugbar": "*",
+    "slim/slim": "4.*",
+    "slim/psr7": "*",
+    "zircote/swagger-php": "5.*"
+  },
+  "replace": {
+    "tecnickcom/tcpdf": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9",
+    "symfony/var-dumper": "^5.4",
+    "psr/log": "^1"
+  },
+  "license": "MIT"
+}
