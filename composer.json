@@ -3,7 +3,7 @@
   "description": "opengerp core open source ERP system web based ",
   "authors": [
     {
-      "name": "Carlo Centrone",
+      "name": "Cognita Srl",
       "email": "info@gerp.it"
     }
   ],
@@ -11,8 +11,13 @@
     "bin-dir": "bin"
   },
   "autoload": {
-    "psr-0": {
-      "Opengerp": "src/"
+    "psr-4": {
+      "Opengerp\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Opengerp\\Tests\\": "tests"
     }
   },
   "require": {
