@@ -1,6 +1,6 @@
 # opengerp
 
-Benvenuto in **opengerpe**, il cuore open source di un sistema ERP scritto in PHP (Slim Framework).  
+Benvenuto in **opengerp**, il cuore open source di un sistema ERP scritto in PHP (Slim Framework).  
 Questa versione fornisce **infrastruttura, contratti e componenti comuni** per sviluppare applicazioni gestionali e moduli verticali.  
 
 Il modello adottato è **open-core**:  
