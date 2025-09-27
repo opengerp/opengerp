@@ -45,7 +45,6 @@
     "symfony/yaml": "6.4.*",
     "doctrine/lexer": "^2.1",
     "doctrine/instantiator": "^1.5",
-    "psr/cache": "^1",
     "smarty/smarty": "v4.5.*",
     "studio-42/elfinder": "2.1.*",
     "opengerp/tcpdf": "dev-main",
