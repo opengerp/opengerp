@@ -48,7 +48,6 @@
     "smarty/smarty": "v4.5.*",
     "studio-42/elfinder": "2.1.*",
     "opengerp/tcpdf": "dev-main",
-    "spipu/html2pdf": "5.2.*",
     "ckeditor/ckeditor": "4.11.*",
     "eluceo/ical": "0.16.1",
     "dragonmantank/cron-expression": "*",
