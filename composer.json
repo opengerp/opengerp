@@ -36,7 +36,6 @@
     "ext-iconv": "*",
     "ext-sockets": "*",
     "symfony/expression-language": "5.4.*",
-    "symfony/mime": "^6.4",
     "symfony/var-exporter": "^5.4",
     "symfony/event-dispatcher": "^5.4",
     "symfony/cache": "^5.4",
