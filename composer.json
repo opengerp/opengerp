@@ -41,7 +41,7 @@
     "symfony/cache": "^5.4",
     "doctrine/lexer": "^2.1",
     "doctrine/instantiator": "^1.5",
-    "smarty/smarty": "v4.5.*",
+    "smarty/smarty": "^3.1|^4.5",
     "studio-42/elfinder": "2.1.*",
     "opengerp/tcpdf": "dev-main",
     "ckeditor/ckeditor": "4.11.*",
