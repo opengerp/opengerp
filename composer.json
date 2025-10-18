@@ -39,7 +39,6 @@
     "symfony/var-exporter": "^5.4",
     "symfony/event-dispatcher": "^5.4",
     "symfony/cache": "^5.4",
-    "symfony/translation": "6.4.*",
     "symfony/yaml": "6.4.*",
     "doctrine/lexer": "^2.1",
     "doctrine/instantiator": "^1.5",
