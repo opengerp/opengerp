@@ -2,11 +2,12 @@
 
 namespace Opengerp\Database;
 
-final class Db
+class Db
 {
     private DbAdapter $adapter;
 
-    public function __construct(DbAdapter $adapter) {
+    public function __construct(DbAdapter $adapter)
+    {
         $this->adapter = $adapter;
     }
 
