@@ -2,13 +2,13 @@
 
 namespace Opengerp\Utils\Database;
 
-use PDO;
+use Opengerp\Database\Db;
 
 class SchemaUpdater
 {
 
 
-    private PDO $pdo;
+    private Db $db;
 
     /**
      * @var bool
@@ -16,9 +16,9 @@ class SchemaUpdater
     private $preview = true;
 
 
-    public function __construct(PDO $pdo)
+    public function __construct(Db $db)
     {
-        $this->pdo = $pdo;
+        $this->db = $db;
         $this->setPreviewUpdateOn();
     }
 
@@ -113,7 +113,7 @@ class SchemaUpdater
             if (!$check) {
 
 
-                if ($this->pdo->query($str_sql)) {
+                if ($this->db->query($str_sql)) {
 
 
                     $this->printLogLine("Table " . $table['name'] . " created");
@@ -148,9 +148,9 @@ class SchemaUpdater
     {
         $vett_campi_comp = array();
 
-        $ris = $this->pdo->query("SHOW FIELDS FROM $table_name ");
+        $ris = $this->db->query("SHOW FIELDS FROM $table_name ");
 
-        while ($lin = $ris->fetch(PDO::FETCH_ASSOC)) {
+        while ($lin = $ris->fetch()) {
             $vett_campi_comp[$lin['Field']] = $lin;
         }
 
@@ -163,8 +163,8 @@ class SchemaUpdater
 
         $vett_index = array();
 
-        $ris = $this->pdo->query("SHOW INDEXES FROM $table_name ");
-        while ($lin = $ris->fetch(PDO::FETCH_ASSOC)) {
+        $ris = $this->db->query("SHOW INDEXES FROM $table_name ");
+        while ($lin = $ris->fetch()) {
 
             $vett_index[$lin['Key_name']][$lin['Seq_in_index']] = $lin;
 
@@ -277,7 +277,7 @@ class SchemaUpdater
         } else {
             $this->printLogLine($str_sql);
 
-            if ($this->pdo->query($str_sql)) {
+            if ($this->db->query($str_sql)) {
                 $this->printLogLine('column created');
             }
 
@@ -440,7 +440,7 @@ class SchemaUpdater
             $this->printLogLine($str_sql);
 
             if (!$this->preview) {
-                $this->pdo->query($str_sql);
+                $this->db->query($str_sql);
                 $this->printLogLine('executed');
 
             }
@@ -491,33 +491,33 @@ class SchemaUpdater
 
             if (!$this->preview) {
 
-                $ris_check = $this->pdo->query("SHOW INDEX FROM $table[name] WHERE Key_name = '$index_name'");
+                $ris_check = $this->db->query("SHOW INDEX FROM $table[name] WHERE Key_name = '$index_name'");
 
-                $lin_check = ($ris_check->fetch(PDO::FETCH_ASSOC));
+                $lin_check = ($ris_check->fetch());
 
 
                 if ($index_name == "PRIMARY") {
                     if ($lin_check) {
 
                         $query = " ALTER TABLE $table[name] DROP PRIMARY KEY ";
-                        $this->pdo->query($query);
+                        $this->db->query($query);
 
                     }
 
                     $query = " ALTER TABLE $table[name] ADD PRIMARY KEY ($str_colums) ";
-                    $this->pdo->query($query);
+                    $this->db->query($query);
 
                 } elseif ($index_type === "FULLTEXT") {
 
                     if ($lin_check) {
 
                         $query = " ALTER TABLE $table[name]  DROP INDEX $index_name ";
-                        $this->pdo->query($query);
+                        $this->db->query($query);
 
                     }
 
                     $query = " ALTER TABLE $table[name] ADD FULLTEXT INDEX $index_name( $str_colums ) ";
-                    $this->pdo->query($query);
+                    $this->db->query($query);
 
 
                 } else {
@@ -526,12 +526,12 @@ class SchemaUpdater
 
                         $query = " ALTER TABLE $table[name]  DROP INDEX $index_name  ";
 
-                        $this->pdo->query($query);
+                        $this->db->query($query);
 
                     }
 
                     $query = " ALTER TABLE $table[name] ADD INDEX $index_name ( $str_colums ) ";
-                    $this->pdo->query($query);
+                    $this->db->query($query);
 
                 }
 
@@ -551,7 +551,7 @@ class SchemaUpdater
         }
 
         $query = "ALTER TABLE $table[name] DROP COLUMN $column_name";
-        return $this->pdo->query($query);
+        return $this->db->query($query);
     }
 
 
@@ -568,7 +568,7 @@ class SchemaUpdater
     {
 
 
-        $db  = $this->pdo;
+        $db  = $this->db;
 
 
         $result_tbl = $db->query("SHOW TABLES ");
@@ -617,10 +617,7 @@ class SchemaUpdater
 
         $output .= "</schema>";
 
-// tell the browser what kind of file is come in
-        header("Content-type: text/xml");
-// print out XML that describes the schema
-        echo $output;
+        return $output;
 
     }
 
