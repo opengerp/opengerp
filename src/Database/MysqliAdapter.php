@@ -18,13 +18,23 @@ final class MysqliAdapter implements DbAdapter
     {
         $st = $this->mysqli->query($sql);
 
-        return new MysqliResult($st, $res);
+        return new MysqliResult($st);
     }
 
 
     public function lastInsertId(): int
     {
         return $this->mysqli->insert_id;
+    }
+
+    public function escape_string(string $string): string
+    {
+
+        $text = $text ?? '';
+
+        return $this->mysqli->real_escape_string($text);
+
+
     }
 
 

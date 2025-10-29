@@ -29,4 +29,18 @@ final class PdoAdapter implements DbAdapter
 
     }
 
+    public function escape_string(string $string): string
+    {
+
+        $text = $text ?? '';
+
+        $text = $this->pdo->quote($text);
+
+        $text = substr($text, 1);
+        $text = substr($text, 0, -1);
+
+        return $text;
+
+    }
+
 }

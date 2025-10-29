@@ -67,10 +67,10 @@ class SchemaUpdater
         $this->printLogLine($table['name']);
 
         // verifica esistenza
-        $ris_table = $this->pdo->query("SHOW TABLES LIKE '$table[name]'");
+        $ris_table = $this->db->query("SHOW TABLES LIKE '$table[name]'");
 
 
-        if (!$lin_table = ($ris_table->fetch(PDO::FETCH_ASSOC))) {
+        if (!$lin_table = ($ris_table->fetch())) {
 
 
             $primary_key_field = null;
@@ -408,9 +408,9 @@ class SchemaUpdater
         if (!$this->preview) {
             if (strlen($des_extra) > 1) {
                 $query = "ALTER TABLE  $table[name] DROP PRIMARY KEY";
-                $this->pdo->query($query);
+                $this->db->query($query);
                 $query = "ALTER TABLE  $table[name] ADD PRIMARY KEY ($children[name])";
-                $this->pdo->query($query);
+                $this->db->query($query);
             }
         }
         //Fine modifica
@@ -453,7 +453,7 @@ class SchemaUpdater
 
 
     /**
-     * @param $table  array
+     * @param $table  \SimpleXMLElement
      * @param $xml_index \SimpleXMLElement
      * @param $vett_indexes array
      */

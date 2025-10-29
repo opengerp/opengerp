@@ -47,6 +47,12 @@ abstract class DbObject
         self::$defaultDb = $db;
     }
 
+    public static function getDefaultDb(): ?Db
+    {
+        return self::$defaultDb;
+    }
+
+
     /**
      * @todo non differenzia valori INT da STRING
      * @param $array
@@ -227,7 +233,7 @@ abstract class DbObject
 
                 } else {
 
-                    $v = doppio_apice($v);
+                    $v = $this->db->escape($v);
                     $vett_values[] = "'" . $v . "'";
 
                 }
@@ -277,13 +283,13 @@ abstract class DbObject
             return false;
         }
 
-        if ( ! $response = gsql_query($query) ) {
+        if ( ! $response = $this->db->query($query) ) {
             gerp_display_log("<b>" . gsql_error() . " (". $this::TABLE_NAME .")</b>");
         }
 
 
         if ( $this->isPrimaryKeyAutoincrement($primary_key) ) {
-            $this->$primary_key = last_insert_id();
+            $this->$primary_key = $this->db->lastInsertId();
         }
 
 
@@ -373,9 +379,9 @@ abstract class DbObject
         }
 
 
-        $ris = $this->query($query) or dd($query);
+        $ris = $this->db->query($query) or dd($query);
 
-        if ($lin = gsql_fetch_assoc($ris)) {
+        if ($lin = $ris->fetch()) {
             $this->original = $lin;
 
             $this->setFromArray($lin);
@@ -418,14 +424,14 @@ abstract class DbObject
                 if ($this->_columns[$k]->null && $v === null) {
                     $v = null;
                 } else {
-                    $v = \Gerp\Utils\Filters::filterInt($v);
+                    $v = Filters::filterInt($v);
                 }
 
             }
 
             if (isset($this->_columns[$k]) && in_array($this->_columns[$k]->type, [Column::TYPE_DECIMAL, Column::TYPE_DOUBLE, Column::TYPE_FLOAT])) {
 
-                $v = \Gerp\Utils\Filters::filterDecimal($v);
+                $v = Filters::filterDecimal($v);
             }
 
             if (isset($this->_columns[$k]) && $this->_columns[$k]->type == Column::TYPE_DATETIME && $this->_columns[$k]->null) {
@@ -500,7 +506,7 @@ abstract class DbObject
 
         }
 
-        $response = gsql_query($query);
+        $response = $this->query($query);
 
 
         if ($response && $this->log && $this->isRealUpdate()) {
@@ -599,7 +605,7 @@ abstract class DbObject
         $query = rtrim($query, "AND ");
         $query .= " LIMIT 1";
 
-        $response = gsql_query($query);
+        $response = $this->query($query);
 
         if ($response && $this->log) {
 
@@ -687,22 +693,24 @@ abstract class DbObject
             $query .= " AND JSON_EXTRACT($json_column, '$.$name') = '$value' ";
         }
 
-        $result = gsql_query($query);
+        $result = $this->query($query);
 
         return gsql_fetch_all($result);
     }
 
+    /*
     public function useQueryBuilder(): QueryBuilder
     {
         return (new QueryBuilder($this->getTableName()));
-    }
+    }*/
+
 
     public function fetchFromExcludingCurrent($key, $value, $id)
     {
         $table_name = $this->getTableName();
         $primary_key = $this->getPrimaryKey();
 
-        $ris = gsql_query(
+        $ris = $this->query(
             "SELECT *
             FROM $table_name
             WHERE $primary_key != '$id' and $key = '$value'");
@@ -840,22 +848,5 @@ abstract class DbObject
         return true;
     }
 
-    private function escape_string($text)
-    {
-
-
-
-
-
-        $text = $text ?? '';
-
-        return mysqli_real_escape_string($hot, $text);
-
-    }
-
-    private function query($query)
-    {
-
-    }
 
 }

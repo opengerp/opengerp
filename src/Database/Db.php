@@ -19,5 +19,10 @@ final class Db
     {
         return $this->adapter->lastInsertId();
     }
+
+    public function escape_string(string $value): string
+    {
+        return $this->adapter->escape_string($value);
+    }
 }
 
