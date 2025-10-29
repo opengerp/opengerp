@@ -16,7 +16,7 @@ final class PdoAdapter implements DbAdapter
 
     public function query(string $sql, array $params = []): DbResult
     {
-        $st = $this->pdo->query($sql, $params);
+        $st = $this->pdo->query($sql, MYSQLI_ASSOC);
 
         return new PdoResult($st);
     }
