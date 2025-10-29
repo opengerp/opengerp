@@ -33,6 +33,20 @@ abstract class DbObject
      */
     protected $log;
 
+    private static ?Db $defaultDb = null;
+
+
+    public function __construct(?Db $db = null)
+    {
+        $this->db   = $db ?? self::$defaultDb;
+
+    }
+
+    public static function setDefaultDb(Db $db): void
+    {
+        self::$defaultDb = $db;
+    }
+
     /**
      * @todo non differenzia valori INT da STRING
      * @param $array
