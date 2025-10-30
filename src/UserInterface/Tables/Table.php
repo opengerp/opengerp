@@ -48,9 +48,5 @@ class Table implements TableInterface
         $this->rows = $rows;
     }
 
-    public function fetch($tpl = 'table.tpl')
-    {
-
-    }
 
 }
