@@ -60,6 +60,11 @@ final class PdoResult implements DbResult
         return $this->affected;
     }
 
+    public function fetchAll(): ?array
+    {
+
+        return $this->stmt->fetchAll();
+    }
 
     // Override fetch_assoc per il caso buffered
     public function __call($name, $args)

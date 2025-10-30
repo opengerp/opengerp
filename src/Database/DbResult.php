@@ -9,5 +9,8 @@ interface DbResult
 
     public function num_rows(): int;     // solo per SELECT (0 altrimenti)
     public function affected_rows(): int; // solo per DML (0 altrimenti)
+
+    public function fetchAll() :? array;
+
 }
 

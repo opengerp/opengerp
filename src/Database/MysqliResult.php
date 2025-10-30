@@ -13,7 +13,7 @@ final class MysqliResult implements DbResult
 
     }
 
-    public function fetch_assoc(): ?array
+    public function fetch(): ?array
     {
 
         if ($this->result === null) {
@@ -37,6 +37,11 @@ final class MysqliResult implements DbResult
     public function affected_rows(): int
     {
         return 0;
+    }
+
+    public function fetchAll(): ?array
+    {
+        $this->result->fetch_all(MYSQLI_ASSOC);
     }
 
 }
