@@ -11,7 +11,7 @@ class TableColumn
 
     public ?string $formatter = null;
 
-    public int $escape;
+    public bool $escape = false;
 
 
 }
