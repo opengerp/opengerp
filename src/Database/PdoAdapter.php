@@ -32,11 +32,11 @@ final class PdoAdapter implements DbAdapter
     public function escape_string(?string $string): string
     {
 
-        $text = $text ?? '';
+        $string = $string ?? '';
 
-        //$text = $this->pdo->quote($text);
+        $string = $this->pdo->quote($string);
 
-        return mb_substr($text, 1, mb_strlen($text) - 2);
+        return mb_substr($string, 1, mb_strlen($string) - 2);
 
 
 
