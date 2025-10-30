@@ -17,7 +17,7 @@ class NativeHtmlTableRenderer
         // thead
         $h[] = '<thead><tr>';
         foreach ($t->columns as $col) {
-            $h[] = '<th>'.$esc($col->label).'</th>';
+            $h[] = '<th>'.$esc($col->des).'</th>';
         }
         $h[] = '</tr></thead>';
 

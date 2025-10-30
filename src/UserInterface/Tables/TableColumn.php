@@ -7,9 +7,9 @@ class TableColumn
     public string $key;
     public string $des;
 
-    public string $tyoe = 'text';
+    public string $type = 'text';
 
-    public ?string $formatter;
+    public ?string $formatter = null;
 
     public int $escape;
 
