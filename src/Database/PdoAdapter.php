@@ -36,10 +36,9 @@ final class PdoAdapter implements DbAdapter
 
         $text = $this->pdo->quote($text);
 
-        //$text = substr($text, 1);
-        //$text = substr($text, 0, -1);
+        return mb_substr($text, 1, mb_strlen($text) - 2);
 
-        return $text;
+
 
     }
 
