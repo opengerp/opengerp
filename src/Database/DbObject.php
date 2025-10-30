@@ -158,6 +158,8 @@ abstract class DbObject
     public function buildInsertQuery()
     {
 
+
+        $db = $this->getDb();
         $table_name = $this->getTableName();
 
         $query = "INSERT INTO $table_name ( ";
@@ -229,7 +231,7 @@ abstract class DbObject
 
                 } else {
 
-                    $v = $this->db->escape($v);
+                    $v = $db->escape_string($v);
                     $vett_values[] = "'" . $v . "'";
 
                 }
