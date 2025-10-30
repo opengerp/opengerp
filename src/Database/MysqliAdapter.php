@@ -27,7 +27,7 @@ final class MysqliAdapter implements DbAdapter
         return $this->mysqli->insert_id;
     }
 
-    public function escape_string(string $string): string
+    public function escape_string(?string $string): string
     {
 
         $text = $text ?? '';

@@ -10,7 +10,7 @@ interface DbAdapter
 
     public function lastInsertId(): int;
 
-    public function escape_string(string $string) : string;
+    public function escape_string(?string $string) : string;
 
 }
 
