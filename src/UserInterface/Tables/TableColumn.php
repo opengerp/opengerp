@@ -4,11 +4,14 @@ namespace Opengerp\UserInterface\Tables;
 
 class TableColumn
 {
-    public $key;
-    public $des;
+    public string $key;
+    public string $des;
 
-    public $tyoe;
+    public string $tyoe = 'text';
 
+    public ?string $formatter;
+
+    public int $escape;
 
 
 }
