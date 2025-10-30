@@ -33,14 +33,10 @@ abstract class DbObject
      */
     protected $log;
 
-    private static ?Db $defaultDb = null;
+    protected static ?Db $defaultDb = null;
 
+    protected Db $db;
 
-    public function __construct(?Db $db = null)
-    {
-        $this->db   = $db ?? self::$defaultDb;
-
-    }
 
     public static function setDefaultDb(Db $db): void
     {
@@ -263,12 +259,23 @@ abstract class DbObject
     {
         $table_name = $this->getTableName();
 
-        $ris = gsql_query("SELECT * FROM $table_name");
 
-        return gsql_fetch_all($ris);
+        $db = $this->getDb();
+
+        $ris = $db->query("SELECT * FROM $table_name");
+
+        return $ris->fetchAll();
     }
 
 
+    public function getDb()
+    {
+
+
+        return self::$defaultDb;
+
+
+    }
 
     public function insert($simulate = false)
     {
@@ -278,18 +285,22 @@ abstract class DbObject
         $vett_primary_keys = explode(',', $primary_keys);
         $primary_key = $vett_primary_keys[0];
 
+
+        $db = $this->getDb();
+
         if ( $simulate ) {
             gerp_display_log($query);
             return false;
         }
 
-        if ( ! $response = $this->db->query($query) ) {
+
+        if ( ! $response = $db->query($query) ) {
             gerp_display_log("<b>" . gsql_error() . " (". $this::TABLE_NAME .")</b>");
         }
 
 
         if ( $this->isPrimaryKeyAutoincrement($primary_key) ) {
-            $this->$primary_key = $this->db->lastInsertId();
+            $this->$primary_key = $db->lastInsertId();
         }
 
 
@@ -379,7 +390,9 @@ abstract class DbObject
         }
 
 
-        $ris = $this->db->query($query) or dd($query);
+        $db = $this->getDb();
+
+        $ris = $db->query($query) or dd($query);
 
         if ($lin = $ris->fetch()) {
             $this->original = $lin;
@@ -506,7 +519,10 @@ abstract class DbObject
 
         }
 
-        $response = $this->query($query);
+
+        $db = $this->getDb();
+
+        $response = $db->query($query);
 
 
         if ($response && $this->log && $this->isRealUpdate()) {
@@ -605,7 +621,9 @@ abstract class DbObject
         $query = rtrim($query, "AND ");
         $query .= " LIMIT 1";
 
-        $response = $this->query($query);
+        $db = $this->getDb();
+
+        $response = $db->query($query);
 
         if ($response && $this->log) {
 
@@ -651,14 +669,17 @@ abstract class DbObject
     {
         $table_name = $this->getTableName();
 
-        $value = gerp_escape_string($value);
 
-        $ris = gsql_query(
+        $db = $this->getDb();
+
+        $value = $db->escape_string($value);
+
+        $ris = $db->query(
             "SELECT *
             FROM $table_name
             WHERE $key = '$value'");
 
-        return gsql_fetch_all($ris);
+        return $ris->fetchAll();
     }
 
     /**
@@ -693,9 +714,12 @@ abstract class DbObject
             $query .= " AND JSON_EXTRACT($json_column, '$.$name') = '$value' ";
         }
 
-        $result = $this->query($query);
 
-        return gsql_fetch_all($result);
+        $db = $this->getDb();
+
+        $result = $db->query($query);
+
+        return ($result)->fetchAll();
     }
 
     /*
@@ -705,18 +729,7 @@ abstract class DbObject
     }*/
 
 
-    public function fetchFromExcludingCurrent($key, $value, $id)
-    {
-        $table_name = $this->getTableName();
-        $primary_key = $this->getPrimaryKey();
 
-        $ris = $this->query(
-            "SELECT *
-            FROM $table_name
-            WHERE $primary_key != '$id' and $key = '$value'");
-
-        return gsql_fetch_all($ris);
-    }
 
     public function setLogOn(Gerp_Auth $auth)
     {
