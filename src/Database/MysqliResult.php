@@ -5,7 +5,7 @@ namespace Opengerp\Database;
 
 final class MysqliResult implements DbResult
 {
-    private \mysqli_result $result;
+    private ?\mysqli_result $result = null;
 
     public function __construct(?\mysqli_result $result)
     {
