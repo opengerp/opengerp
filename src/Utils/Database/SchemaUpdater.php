@@ -469,7 +469,10 @@ class SchemaUpdater
 
             $name = (string)$columns['name'];
             $seq = (string)$columns['seq'];
-            $vett_colums[$index_name][] = $columns['name'];
+            $length = (string)$columns['length'] ?? '';
+
+            $vett_colums[$name] = ['name'=>$name, 'type'=>$index_type, 'seq'=>$seq ,'length'=>$length];
+
 
             if (!isset($vett_indexes[$index_name][$seq])) {
                 $vett_update[$index_name] = true;
@@ -481,6 +484,7 @@ class SchemaUpdater
             }
 
         }
+
 
 
         foreach ($vett_update as $index_name => $value) {
@@ -503,7 +507,7 @@ class SchemaUpdater
 
             $str_colums = rtrim($str_colums, ",");
 
-            
+
             if (!$this->preview) {
 
                 $ris_check = $this->db->query("SHOW INDEX FROM $table[name] WHERE Key_name = '$index_name'");
