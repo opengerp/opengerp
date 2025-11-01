@@ -421,7 +421,7 @@ class SchemaUpdater
         if (
             (stripos($vett_column['Type'], 'varchar') !== false
                 && stripos($children['type'], 'int') !== false)
-            &&
+            ||
             (stripos($vett_column['Type'], 'text') !== false
                 && stripos($children['type'], 'varchar') !== false)
         ) {

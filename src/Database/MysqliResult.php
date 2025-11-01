@@ -41,7 +41,7 @@ final class MysqliResult implements DbResult
 
     public function fetchAll(): ?array
     {
-        $this->result->fetch_all(MYSQLI_ASSOC);
+        return $this->result->fetch_all(MYSQLI_ASSOC);
     }
 
 }
