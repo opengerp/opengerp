@@ -487,8 +487,23 @@ class SchemaUpdater
 
             $this->printLogLine($table['name'] . ' ' . $index_name . ':' . $value);
 
-            $str_colums = implode(',', $vett_colums[$index_name]);
 
+            $str_colums = '';
+            foreach($vett_colums as $name => $vett_column) {
+                if ($vett_column['length']>0) {
+                    $str_colums .= $name."(".$vett_column['length']."), ";
+                } else {
+                    $str_colums .= $name.", ";
+                }
+
+
+            }
+
+            $str_colums = rtrim($str_colums);
+
+            $str_colums = rtrim($str_colums, ",");
+
+            
             if (!$this->preview) {
 
                 $ris_check = $this->db->query("SHOW INDEX FROM $table[name] WHERE Key_name = '$index_name'");
