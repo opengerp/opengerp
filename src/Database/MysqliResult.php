@@ -7,7 +7,7 @@ final class MysqliResult implements DbResult
 {
     private \mysqli_result $result;
 
-    public function __construct(\mysqli_result $result)
+    public function __construct(?\mysqli_result $result)
     {
         $this->result = $result;
 
