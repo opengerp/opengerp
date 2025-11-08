@@ -20,7 +20,7 @@ class Search
         return end($vett);
     }
 
-    public static function readDirRecursiveAsArray($dir, $ext, $only_file = false)
+    public static function readDirRecursiveAsArray($dir, $ext = null, $only_file = false)
     {
 
         $vett = [];
@@ -47,7 +47,8 @@ class Search
                     }
                 }
 
-                if (self::getExt($entry) == $ext) {
+                if ($ext === null || self::getExt($entry) == $ext ) {
+
                     $data = date("Y-m-d H:i", filectime($dir . $entry));
                     $size = filesize($dir . $entry);
 
@@ -55,6 +56,7 @@ class Search
                         'nome' => $dir . $entry,
                         'data' => $data,
                         'size' => $size,
+                        'ext' => $ext,
                         'filename' => $entry,
                         'human_size' => self::human_filesize($size));
                 }
