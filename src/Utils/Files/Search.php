@@ -20,7 +20,13 @@ class Search
         return end($vett);
     }
 
-    public static function readDirRecursiveAsArray($dir, $ext = null, $only_file = false)
+    /**
+     * @param $dir string
+     * @param $ext ext pattern
+     * @param $only_file boolean no recursion
+     * @return array
+     */
+    public static function readDirRecursiveAsArray(string $dir, ?string $ext = null, bool $only_file = false) : array
     {
 
         $vett = [];
