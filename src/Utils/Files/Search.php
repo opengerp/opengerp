@@ -52,8 +52,9 @@ class Search
                         array_push($vett, $v);
                     }
                 }
+                $file_ext = self::getExt($entry);
 
-                if ($ext === null || self::getExt($entry) == $ext ) {
+                if ($ext === null || $file_ext == $ext ) {
 
                     $data = date("Y-m-d H:i", filectime($dir . $entry));
                     $size = filesize($dir . $entry);
@@ -62,7 +63,7 @@ class Search
                         'nome' => $dir . $entry,
                         'data' => $data,
                         'size' => $size,
-                        'ext' => $ext,
+                        'ext' => $file_ext,
                         'filename' => $entry,
                         'human_size' => self::human_filesize($size));
                 }
