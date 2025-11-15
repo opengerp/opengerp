@@ -1,0 +1,23 @@
+<schema>
+    <table name="INT_Moduli" config="true" dbobject="Moduli">
+        <field name="ID" type="varchar(20)" null="NO" default="" primary_key="yes"/>
+        <field name="Descrizione" type="varchar(255)" null="NO" default=""/>
+        <field name="Descrizione_Ext" type="text" null="YES" default=""/>
+        <field name="Path" type="varchar(255)" null="YES" default="" comment="obsoleto"/>
+        <field name="Controller" type="varchar(255)" null="NO" default=""/>
+        <field name="Voce_Menu" type="varchar(255)" null="NO" default=""/>
+        <field name="Get_Vars" type="varchar(255)" null="YES" default=""/>
+        <field name="ID_Parent" type="varchar(50)" null="NO" default="0"/>
+        <field name="Custom" type="smallint(4)" null="NO" default="0"/>
+        <field name="Json_Config" type="text" null="YES" default=""/>
+        <field name="Json_Parametri_Utenti" type="text" null="YES" default=""/>
+
+        <field name="Widget" type="varchar(255)" null="YES" default=""/>
+
+        <index name="PRIMARY">
+            <field name="ID" seq="1"/>
+        </index>
+
+    </table>
+
+</schema>

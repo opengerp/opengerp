@@ -14,7 +14,7 @@ ext
 vendor/*
 tmp
 /config.php
-/test/config.php
+/tests/env/config.php
 custom/*
 templates/templates_c
 indip/changelog.json
