@@ -335,21 +335,35 @@ abstract class DbObject
     }
 
 
-    //TODO: loadById should work with multiple column primary key
-    public function loadById($id = null)
+    /**
+     * @param string|null ...$ids
+     * @return bool
+     * @throws \Exception
+     */
+    public function loadById(?string ...$ids)
     {
-        $table_name = $this->getTableName();
-
         $c = get_called_class();
-        $primary = explode(',', $c::TABLE_PRIMARY_KEY)[0];
-        $primary_id = ($id == null ? $this->$primary : $id);
+        $primarys = explode(',', $c::TABLE_PRIMARY_KEY);
 
-        if ($primary_id === null) {
-            return false;
+
+
+        $c = 0;
+        $vett_primary_keys = [];
+
+        foreach($primarys as $primary) {
+
+            if ($ids[$c] == null) {
+                $vett_primary_keys[$primary] = $this->$primary;
+            } else {
+                $vett_primary_keys[$primary] = $ids[$c];
+            }
         }
-        return $this->loadBy([$primary => $primary_id]);
+
+
+        return $this->loadBy($vett_primary_keys);
 
     }
+
 
     /**
      * attenzione questo metodo restituisce solo la prima occorrenza, andrebbe sostituito con restituzione di una collection
@@ -862,6 +876,22 @@ abstract class DbObject
 
         return true;
     }
+
+    public function upsert()
+    {
+
+        $dup = clone $this;
+
+        if ( ! $dup->loadById()) {
+
+            return $this->insert();
+        }
+
+        return  $this->update();
+
+    }
+
+    
 
 
 }

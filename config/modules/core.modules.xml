@@ -1,0 +1,244 @@
+<modules>
+    <INT_Moduli des="Utenti" required="true">
+        <ID>amm_ute</ID>
+        <Descrizione>Utenti</Descrizione>
+        <Des_Ext>Creazione, modifica, rimozione utenti, agenti e operatori. Modifica autorizzazioni sui vari moduli.
+        </Des_Ext>
+        <Controller>Gerp_Utenti_Controller</Controller>
+        <Voce_Menu>Utenti</Voce_Menu>
+        <ID_Parent>gerp_sistema</ID_Parent>
+        <languages>
+            <INT_Moduli_Lang>
+                <Cod_Lingua>EN</Cod_Lingua>
+                <Descrizione>Users</Descrizione>
+                <Voce_Menu>Users</Voce_Menu>
+                <Des_Ext>Users creation, editing, removal. Creation of salespersons. Authorization editing.</Des_Ext>
+            </INT_Moduli_Lang>
+
+            <INT_Moduli_Lang>
+                <Cod_Lingua>ES</Cod_Lingua>
+                <Descrizione>Usuarios</Descrizione>
+                <Voce_Menu>Usuarios</Voce_Menu>
+
+            </INT_Moduli_Lang>
+
+
+            <INT_Moduli_Lang language="fr">
+                <Cod_Lingua>FR</Cod_Lingua>
+                <Descrizione><![CDATA[Utilisateurs]]></Descrizione>
+                <Voce_Menu><![CDATA[Utilisateurs]]></Voce_Menu>
+            </INT_Moduli_Lang>
+
+        </languages>
+
+
+        <parameters>
+            <param>
+                <name>text_permanent_info</name>
+                <type>text</type>
+                <description>Stringa informativa permanente</description>
+                <default></default>
+            </param>
+
+            <param>
+                <name>ssl_forced_connection</name>
+                <type>boolean</type>
+                <description>Richiede autenticazione con SSL</description>
+                <default>0</default>
+            </param>
+
+            <param>
+                <name>allow_non_ssl_api_auth</name>
+                <type>boolean</type>
+                <description>Consente accesso API non ssl (da attivare solo su server su rete LAN non esposti a
+                    internet)
+                </description>
+                <default>0</default>
+            </param>
+
+            <param>
+                <name>url_sistema</name>
+                <type>text</type>
+                <description>Url di accesso (esempio) https://nomeazienda.gerp.it/</description>
+                <default></default>
+            </param>
+
+
+            <param>
+                <name>ab_nome_cognome</name>
+                <type>boolean</type>
+                <description>Visualizza il nome prima del cognome</description>
+                <default>1</default>
+            </param>
+
+
+            <param>
+                <name>ab_work_contracts</name>
+                <type>boolean</type>
+                <description>Gestione dipendenti</description>
+                <default>0</default>
+            </param>
+
+
+            <param>
+                <name>max_active_users</name>
+                <type>int</type>
+                <description>Massimo utenti attivi (0=illimitati)</description>
+                <default>0</default>
+            </param>
+
+            <param>
+                <name>private_network_prefix</name>
+                <type>string</type>
+                <description>Prefisso rete privata</description>
+                <default></default>
+            </param>
+
+            <param>
+                <name>GERP_SMTP</name>
+                <type>text</type>
+                <description>Smtp server invio email da parte del sistema.</description>
+                <default/>
+            </param>
+
+
+            <param>
+                <name>GERP_NAME_SENDER</name>
+                <type>text</type>
+                <description>Nome mittente sistema</description>
+                <default/>
+            </param>
+
+            <param>
+                <name>GERP_EMAIL</name>
+                <type>text</type>
+                <description>Indirizzo email sistema</description>
+                <default/>
+            </param>
+
+            <param>
+                <name>GERP_SMTP_USERNAME</name>
+                <type>text</type>
+                <description>Username smtp server</description>
+                <default/>
+            </param>
+
+            <param>
+                <name>GERP_SMTP_PASSWORD</name>
+                <type>text</type>
+                <description>Password smtp server</description>
+                <default/>
+            </param>
+            <param>
+                <name>GERP_EMAIL_BCC</name>
+                <type>text</type>
+                <description>Bcc addresses (comma separated)</description>
+                <default/>
+            </param>
+
+
+            <param>
+                <name>GERP_EMAIL_UNIFY_RECIPIENTS</name>
+                <type>boolean</type>
+                <description>Unify all recipient in one mail</description>
+                <default>0</default>
+            </param>
+
+
+            <param>
+                <name>GERP_EMAIL_REPLY_TO</name>
+                <type>text</type>
+                <description>ReplyTo address</description>
+                <default/>
+            </param>
+            <param>
+                <name>GERP_SMTP_PORT</name>
+                <type>integer</type>
+                <description>Smtp port</description>
+                <default/>
+            </param>
+            <param>
+                <name>GERP_SMTP_SECURITY</name>
+                <type>text</type>
+                <description>Smtp security (ssl/tls)</description>
+                <default></default>
+            </param>
+
+
+            <param>
+                <name>GERP_IMAP_SERVER</name>
+                <type>text</type>
+                <description>Nome (o IP) del server IMAP</description>
+                <default/>
+            </param>
+
+            <param>
+                <name>GERP_IMAP_FOLDER</name>
+                <type>text</type>
+                <description>Cartella di salvataggio IMAP</description>
+                <default/>
+            </param>
+
+            <param>
+                <name>GERP_IMAP_USERNAME</name>
+                <type>text</type>
+                <description>Username IMAP</description>
+                <default/>
+            </param>
+
+            <param>
+                <name>GERP_IMAP_PASSWORD</name>
+                <type>text</type>
+                <description>Password IMAP</description>
+                <default/>
+            </param>
+
+            <param>
+                <name>GERP_EMAIL_SIGNATURE</name>
+                <type>text</type>
+                <description>Firma</description>
+                <default/>
+            </param>
+
+
+            <param>
+                <name>available_languages</name>
+                <type>string</type>
+                <description>Available languages</description>
+                <default>it</default>
+            </param>
+
+
+            <param>
+                <name>custom_fields</name>
+                <type>string</type>
+                <description>Caratteristiche personalizzabili separate da ,</description>
+                <default></default>
+            </param>
+
+            <param>
+                <name>directory</name>
+                <type>text</type>
+                <description>Directory per allegati</description>
+                <default></default>
+            </param>
+
+
+            <param>
+                <name>ip_whitelist</name>
+                <type>text</type>
+                <description>Ip abilitati per accesso (formato csv, vuoto per tutti)</description>
+                <default></default>
+            </param>
+
+            <param>
+                <name>items_per_page</name>
+                <type>text</type>
+                <description>Numero utenti per pagine</description>
+                <default>50</default>
+            </param>
+
+        </parameters>
+
+    </INT_Moduli>
+</modules>
