@@ -4,7 +4,7 @@
         <Descrizione>Utenti</Descrizione>
         <Des_Ext>Creazione, modifica, rimozione utenti, agenti e operatori. Modifica autorizzazioni sui vari moduli.
         </Des_Ext>
-        <Controller>Gerp_Utenti_Controller</Controller>
+        <Controller>\Operngerp\Utenti\Controller</Controller>
         <Voce_Menu>Utenti</Voce_Menu>
         <ID_Parent>gerp_sistema</ID_Parent>
         <languages>
