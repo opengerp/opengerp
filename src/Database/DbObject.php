@@ -490,7 +490,7 @@ abstract class DbObject
 
             } else {
 
-                $v = $this->db->escape_string($v);
+                $v = $db->escape_string($v);
                 $tokens[] = "'" . $v . "'";
 
             }
