@@ -489,7 +489,7 @@ abstract class DbObject
 
             } else {
 
-                $v = doppio_apice($v);
+                $v = $this->db->escape_string($v);
                 $tokens[] = "'" . $v . "'";
 
             }
@@ -530,7 +530,7 @@ abstract class DbObject
         $query .= " LIMIT 1";
 
         if ($simulate) {
-            gerp_display_log($query);
+            echo ($query);
             return true;
 
         }
