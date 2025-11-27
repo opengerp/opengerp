@@ -425,6 +425,7 @@ abstract class DbObject
 
     public function update($simulate = false)
     {
+        $db = $this->getDb();
 
         $table_name = $this->getTableName();
 
@@ -536,7 +537,6 @@ abstract class DbObject
         }
 
 
-        $db = $this->getDb();
 
         $response = $db->query($query);
 
