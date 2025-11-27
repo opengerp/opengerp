@@ -10,24 +10,24 @@ class Url
 
         $final = "<a href='$url' class='$class'";
 
-        if ( $confirm ) {
+        if ($confirm) {
             $encoded = is_bool($confirm) ? "" : htmlspecialchars(json_encode($confirm));
             $final .= " onclick='if (!gerp_confirm($encoded)) return false;'";
         }
 
-        if ( $target ) {
+        if ($target) {
             $final .= " target='$target' ";
         }
 
-        if ( $rel ) {
+        if ($rel) {
             $final .= " rel='$rel' ";
         }
 
-        if ( $download != '') {
-            $final .= ' download="'.$download.'"';
+        if ($download != '') {
+            $final .= ' download="' . $download . '"';
         }
 
-        $final .= ' title="'.$title.'"';
+        $final .= ' title="' . $title . '"';
 
         $final .= ">$des</a>";
 
@@ -39,7 +39,7 @@ class Url
      * @param array $vett
      * @return string
      */
-    public static function buildLinkWithModal(string $des = '', array $vett = [], $class=''): string
+    public static function buildLinkWithModal(string $des = '', array $vett = [], $class = ''): string
     {
         $url = self::buildLink($des, $vett, $class, false, false, 'modal:open');
 
@@ -50,7 +50,7 @@ class Url
     {
         $base = "";
 
-        if ( $add_base ) {
+        if ($add_base) {
             $base = 'index.php?';
         }
 
@@ -60,6 +60,7 @@ class Url
         return $base;
 
     }
+
 
 
 }
