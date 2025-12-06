@@ -9,7 +9,6 @@ use Opengerp\Database\Column;
 class Moduli extends DbObject
 {
 
-
     const TABLE_NAME = 'INT_Moduli';
     const TABLE_PRIMARY_KEY = 'ID';
 
@@ -33,8 +32,11 @@ class Moduli extends DbObject
         $this->_columns['ID'] = new Column();
         $this->_columns['ID']->primary_key = true;
 
+
         $this->_columns['Custom'] = new Column();
         $this->_columns['Custom']->type = Column::TYPE_INT;
+        $this->_columns['Custom']->default = 0;
+
     }
 
 

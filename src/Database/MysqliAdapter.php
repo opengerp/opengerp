@@ -36,9 +36,9 @@ final class MysqliAdapter implements DbAdapter
     public function escape_string(?string $string): string
     {
 
-        $text = $text ?? '';
+        $string = $string ?? '';
 
-        return $this->mysqli->real_escape_string($text);
+        return $this->mysqli->real_escape_string($string);
 
 
     }
