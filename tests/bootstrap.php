@@ -8,7 +8,15 @@ error_reporting(E_ALL  && ~E_NOTICE && ~E_DEPRECATED);
 
 
 require './vendor/autoload.php';
-$config = require './tests/env/config.php';
+
+$config_path = './tests/env/config.php';
+if (!file_exists($config_path)) {
+    fwrite(STDERR, "\033[31mERRORE: file mancante $config_path\033[0m\n");
+    exit(1);
+}
+
+$config = require $config_path;
+
 $db_config = \Opengerp\App\DbConfig::fromArray($config);
 
 $conn = $db_config->connect();
@@ -27,3 +35,8 @@ $update = new \Opengerp\Utils\Database\SchemaUpdater($db);
 
 $update->setPreviewUpdateOff();
 $update->checkDatabaseSchema("./database/schema/schema.xml");
+
+
+$base_modules_repo = new \Opengerp\System\ModuliRepository('./src/Modules/Users/Config/module.xml');
+$base_modules_repo->checkModules();
+

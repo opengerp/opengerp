@@ -180,7 +180,6 @@ abstract class DbObject
             }
 
 
-
             $vett_columns[] = $k;
 
 
@@ -193,6 +192,9 @@ abstract class DbObject
 
                 if (isset($this->_columns[$k]) && $this->_columns[$k]->type == Column::TYPE_INT) {
 
+                    if ($v === '' || $v === null) {
+                        $v = $this->_columns[$k]->default;
+                    }
 
                     $v = Filters::filterInt($v);
 
@@ -291,7 +293,7 @@ abstract class DbObject
         $db = $this->getDb();
 
         if ( $simulate ) {
-            gerp_display_log($query);
+            echo ($query);
             return false;
         }
 
@@ -425,6 +427,7 @@ abstract class DbObject
 
     public function update($simulate = false)
     {
+        $db = $this->getDb();
 
         $table_name = $this->getTableName();
 
@@ -489,7 +492,7 @@ abstract class DbObject
 
             } else {
 
-                $v = doppio_apice($v);
+                $v = $db->escape_string($v);
                 $tokens[] = "'" . $v . "'";
 
             }
@@ -530,13 +533,12 @@ abstract class DbObject
         $query .= " LIMIT 1";
 
         if ($simulate) {
-            gerp_display_log($query);
+            echo ($query);
             return true;
 
         }
 
 
-        $db = $this->getDb();
 
         $response = $db->query($query);
 

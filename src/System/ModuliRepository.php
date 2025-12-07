@@ -8,10 +8,7 @@ class ModuliRepository
     private $file_schema;
 
 
-    /**
-     * @param string $file_schema path to schema
-     */
-    public function __construct(?string $file_schema = "./lib/schema/gerp_modules.xml")
+    public function __construct($file_schema="./lib/schema/gerp_modules.xml")
     {
 
 
@@ -66,6 +63,7 @@ class ModuliRepository
     public function install($id)
     {
 
+
         $file_moduli = $this->file_schema;
 
         $obj_schema = simplexml_load_file($file_moduli);
@@ -85,12 +83,11 @@ class ModuliRepository
             if ($modulo->ID == $id) {
 
 
-                $descrizione = (string)$modulo->Descrizione;
-                $voce_menu = (string)$modulo->Voce_Menu;
-                $id_parent = $modulo->ID_Parent;
-                $controller = (string)$modulo->Controller;
+                $descrizione = (string) $modulo->Descrizione;
+                $voce_menu = (string) $modulo->Voce_Menu;
+                $id_parent = (string) $modulo->ID_Parent;
+                $controller = (string) $modulo->Controller;
                 $des_ext = (string) $modulo->Des_Ext;
-
                 $get_var = (string) $modulo->Get_Vars;
 
                 foreach ($modulo->parameters as $key=>$parameters) {
@@ -102,16 +99,18 @@ class ModuliRepository
                 $json_parameters = json_encode($vett_parameters);
 
 
-                $db = new \Opengerp\Core\DbObjects\Moduli();
-                $db->ID = $id;
-                $db->Descrizione = $descrizione;
-                $db->Descrizione_Ext  = $des_ext;
-                $db->Voce_Menu = $voce_menu;
-                $db->ID_Parent = $id_parent;
-                $db->Controller = $controller;
-                $db->Get_Vars = $get_var;
-                $db->Json_Config = $json_parameters;
-                $db->insert();
+                $db_mod = new \Opengerp\Core\DbObjects\Moduli();
+                $db_mod->ID = $id;
+                $db_mod->Descrizione = $descrizione;
+                $db_mod->Descrizione_Ext  = $des_ext;
+                $db_mod->Voce_Menu = $voce_menu;
+                $db_mod->ID_Parent = $id_parent;
+                $db_mod->Controller = $controller;
+                $db_mod->Get_Vars = $get_var;
+                $db_mod->Json_Config = $json_parameters;
+                
+                $db_mod->insert();
+
 
 
                 if ($modulo->documents) {
@@ -368,7 +367,6 @@ class ModuliRepository
         }
 
     }
-
 
 
 }
