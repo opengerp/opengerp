@@ -10,7 +10,7 @@ class ErrorMessage extends Message
     {
 
 
-        $str = $this->str;
+        $str = $this->getStr();
         $msg = "<div class='alert alert-danger' role='alert'> <span class='alert_close'>&times;</span> $str </div>";
 
         echo $msg;

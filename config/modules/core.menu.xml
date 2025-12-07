@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menu_parent>
+
+
+    <INT_Menu>
+        <ID_Menu obsolete="1">gerp_prodotti</ID_Menu>
+        <Voce_Menu>Prodotti</Voce_Menu>
+        <Icon>fa-file</Icon>
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">Produits</Voce_Menu>
+            <Voce_Menu lang="EN">Products</Voce_Menu>
+            <Voce_Menu lang="ES">Productos</Voce_Menu>
+            <Voce_Menu lang="DE">Produzieren</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+    <INT_Menu>
+        <ID_Menu obsolete="2">gerp_produzione</ID_Menu>
+        <Voce_Menu>Produzione</Voce_Menu>
+        <Icon>fa-wrench</Icon>
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">Production</Voce_Menu>
+            <Voce_Menu lang="EN">Production</Voce_Menu>
+            <Voce_Menu lang="ES">Producti&amp;ograve;n</Voce_Menu>
+            <Voce_Menu lang="DE">Produktion</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+    <INT_Menu>
+        <ID_Menu obsolete="4">gerp_report</ID_Menu>
+        <Voce_Menu>Report</Voce_Menu>
+        <Icon>fa-bar-chart-o</Icon>
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">Report</Voce_Menu>
+            <Voce_Menu lang="EN">Report</Voce_Menu>
+            <Voce_Menu lang="ES">Report</Voce_Menu>
+            <Voce_Menu lang="DE">Report</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+    <INT_Menu>
+        <ID_Menu obsolete="5">gerp_vendite</ID_Menu>
+        <Voce_Menu>Vendite</Voce_Menu>
+        <Icon>fa-desktop</Icon>
+
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">Ventes</Voce_Menu>
+            <Voce_Menu lang="EN">Sales</Voce_Menu>
+            <Voce_Menu lang="ES">Ventas</Voce_Menu>
+            <Voce_Menu lang="DE">Vertrieb</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+    <INT_Menu>
+        <ID_Menu obsolete="6">gerp_acquisti</ID_Menu>
+        <Voce_Menu>Acquisti</Voce_Menu>
+        <Icon>fa-stack-exchange</Icon>
+
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">Achat</Voce_Menu>
+            <Voce_Menu lang="EN">Purchase</Voce_Menu>
+            <Voce_Menu lang="ES">Compras</Voce_Menu>
+            <Voce_Menu lang="DE">Einkaufen</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+    <INT_Menu>
+        <ID_Menu obsolete="7">gerp_sistema</ID_Menu>
+        <Voce_Menu>Sistema</Voce_Menu>
+        <Icon>fa-users</Icon>
+
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">System</Voce_Menu>
+            <Voce_Menu lang="EN">System</Voce_Menu>
+            <Voce_Menu lang="ES">Sistema</Voce_Menu>
+            <Voce_Menu lang="DE">System</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+    <INT_Menu>
+        <ID_Menu obsolete="8">gerp_contabilita</ID_Menu>
+        <Voce_Menu>Contabilit&amp;agrave;</Voce_Menu>
+        <Icon>fa-book</Icon>
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">Comptabilit&amp;egrave;</Voce_Menu>
+            <Voce_Menu lang="EN">Accounting</Voce_Menu>
+            <Voce_Menu lang="ES">Contabilidad</Voce_Menu>
+            <Voce_Menu lang="DE">Buchhaltung</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+    <INT_Menu>
+        <ID_Menu obsolete="">gerp_progetti</ID_Menu>
+        <Voce_Menu>Progetti</Voce_Menu>
+        <Icon>fa-tasks</Icon>
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">Progetti</Voce_Menu>
+            <Voce_Menu lang="EN">Projects</Voce_Menu>
+            <Voce_Menu lang="ES">Progetti</Voce_Menu>
+            <Voce_Menu lang="DE">Progetti</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+    <INT_Menu>
+        <ID_Menu obsolete="9">gerp_profilo</ID_Menu>
+        <Voce_Menu>Profilo</Voce_Menu>
+        <Icon>fa-user</Icon>
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">Profil</Voce_Menu>
+            <Voce_Menu lang="EN">Profile</Voce_Menu>
+            <Voce_Menu lang="ES">Perfil</Voce_Menu>
+            <Voce_Menu lang="DE">Profil</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+    <INT_Menu>
+        <ID_Menu>gerp_qa</ID_Menu>
+        <Voce_Menu>Qualit&amp;agrave;</Voce_Menu>
+        <Icon>fa-user</Icon>
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">Quality assurance</Voce_Menu>
+            <Voce_Menu lang="EN">Quality assurance</Voce_Menu>
+            <Voce_Menu lang="ES">Quality assurance</Voce_Menu>
+            <Voce_Menu lang="DE">Quality assurance</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+    <INT_Menu>
+        <ID_Menu obsolete="9">gerp_ecommerce</ID_Menu>
+        <Voce_Menu>E-commerce</Voce_Menu>
+        <Icon>fa-shopping-cart</Icon>
+
+        <Json_Traduzione>
+            <Voce_Menu lang="FR">E-commerce</Voce_Menu>
+            <Voce_Menu lang="EN">E-commerce</Voce_Menu>
+            <Voce_Menu lang="ES">E-commerce</Voce_Menu>
+            <Voce_Menu lang="DE">E-commerce</Voce_Menu>
+        </Json_Traduzione>
+    </INT_Menu>
+
+
+</menu_parent>
+

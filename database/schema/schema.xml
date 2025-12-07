@@ -20,4 +20,32 @@
 
     </table>
 
+    <table name="INT_Moduli_Lang" config="true">
+        <field name="ID_Modulo" type="varchar(20)" null="NO" default="" primary_key="yes"/>
+        <field name="Cod_Lingua" type="char(2)" null="NO" default="" primary_key="yes"/>
+        <field name="Descrizione" type="varchar(255)" null="NO" default=""/>
+        <field name="Voce_Menu" type="varchar(255)" null="NO" default=""/>
+
+        <index name="PRIMARY">
+            <field name="ID_Modulo" seq="1"/>
+            <field name="Cod_Lingua" seq="2"/>
+
+        </index>
+
+    </table>
+
+    <table name="INT_Menu" config="true" dbobject="MenuItems">
+        <field name="ID_Menu" type="varchar(255)" null="NO" default="" primary_key="yes"/>
+        <field name="Voce_Menu" type="varchar(255)" null="NO" default=""/>
+        <field name="Icon" type="varchar(255)" null="NO" default=""/>
+
+        <field name="Json_Traduzione" type="text" null="NO" default=""/>
+
+        <index name="PRIMARY">
+            <field name="ID_Menu" seq="1"/>
+        </index>
+
+    </table>
+
 </schema>
+

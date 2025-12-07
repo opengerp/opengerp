@@ -6,18 +6,13 @@ abstract class Message
 {
 
     protected $str;
-    protected $params = [];
+    protected $context = [];
 
 
     public function __construct($str, $params)
     {
-        if ( ! is_array($str) ) {
-            $str = trans($str, $params);
-            $str = vsprintf($str, $params);
-        }
-
         $this->str = $str;
-        $this->params = $params;
+        $this->context = $params;
     }
 
 
@@ -34,7 +29,10 @@ abstract class Message
 
     public function getStr()
     {
-        return $this->str;
-    }
+        if (function_exists('trans')) {
+            return trans($this->str, $this->context);
+        }
+        return vsprintf($this->str, $this->context);
 
+    }
 }
