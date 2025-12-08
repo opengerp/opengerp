@@ -5,8 +5,8 @@ namespace Opengerp\Core\Console;
 abstract class Message
 {
 
-    protected $str;
-    protected $context = [];
+    protected string $str;
+    protected array $context = [];
 
 
     public function __construct($str, $params)
@@ -34,5 +34,10 @@ abstract class Message
         }
         return vsprintf($this->str, $this->context);
 
+    }
+
+    public function __toString()
+    {
+        return $this->getStr();
     }
 }

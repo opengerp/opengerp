@@ -3,6 +3,8 @@
 namespace Opengerp\Core\Console;
 
 
+use Opengerp\Core\Console\Message;
+
 class Console
 {
 
@@ -107,6 +109,11 @@ class Console
         }
 
         return self::$messages;
+    }
+
+    public static function fetchLastMessage() : ?Message
+    {
+        return self::$messages[count(self::$messages) - 1] ?? null;
     }
 
 
