@@ -34,6 +34,7 @@
 
     </table>
 
+
     <table name="INT_Menu" config="true" dbobject="MenuItems">
         <field name="ID_Menu" type="varchar(255)" null="NO" default="" primary_key="yes"/>
         <field name="Voce_Menu" type="varchar(255)" null="NO" default=""/>
@@ -46,6 +47,102 @@
         </index>
 
     </table>
+
+    <table name="INT_Utenti" config="true" entity="Users" dbobject="Users">
+        <field name="ID" type="int(11)" null="NO" default="" primary_key="yes" extra="auto_increment"/>
+        <field name="Nome" type="varchar(50)" null="YES" default=""/>
+        <field name="Cognome" type="varchar(50)" null="YES" default=""/>
+        <field name="Titolo" type="varchar(50)" null="YES" default=""/>
+        <field name="Des_Azienda" type="varchar(255)" null="YES" default=""/>
+        <field name="Azienda" type="char(1)" null="YES" default="NULL" comment="obsoleto"/>
+        <field name="ID_Cliente_Utente" type="int(11)" null="YES" default=""/>
+
+        <field name="Data_Nascita" type="varchar(50)" null="YES" default=""/>
+        <field name="Cod_Localita_Nas" type="varchar(20)" null="YES" default=""/>
+        <field name="Cod_Nazione_Nas" type="char(3)" null="YES" default=""/>
+        <field name="Des_Localita_Nas" type="varchar(255)" null="YES" default=""/>
+
+        <field name="Cod_Cap" type="varchar(10)" null="YES" default=""/>
+        <field name="Sig_Prov" type="char(2)" null="YES" default=""/>
+
+        <field name="Indirizzo" type="varchar(255)" null="YES" default=""/>
+        <field name="Indirizzo2" type="varchar(255)" null="YES" default=""/>
+
+        <field name="Des_Localita" type="varchar(255)" null="YES" default=""/>
+        <field name="Codice_Fiscale" type="varchar(16)" null="YES" default=""/>
+        <field name="Cod_Localita" type="varchar(50)" null="YES" default=""/>
+        <field name="Cod_Nazione" type="varchar(3)" null="YES" default=""/>
+        <field name="Fisso" type="varchar(50)" null="YES" default=""/>
+        <field name="Mobile" type="varchar(50)" null="YES" default=""/>
+        <field name="Interno" type="varchar(50)" null="YES" default=""/>
+        <field name="Email" type="varchar(127)" null="YES" default=""/>
+        <field name="Email_Intranet" type="varchar(127)" null="YES" default=""/>
+        <field name="Note_Utente" type="varchar(255)" null="YES" default=""/>
+        <field name="ID_Role" type="int(11)" null="NO" default="0"/>
+        <field name="ID_Reparto" type="int(11)" null="YES" default=""/>
+        <field name="Stato_Utente" type="smallint(6)" null="YES" default=""/>
+        <field name="Utente" type="int(11)" null="YES" default=""/>
+        <field name="Str_Activation" type="varchar(255)" null="YES" default=""/>
+        <field name="Date_Inserted" type="datetime" null="YES" default=""/>
+        <field name="Data_Ultimo_Agg" type="datetime" null="YES" default=""/>
+
+        <field name="Json_Utente" type="text" null="YES" default=""/>
+
+        <index name="PRIMARY">
+            <field name="ID" seq="1"/>
+        </index>
+
+        <index name="ID_Cliente_Utente">
+            <field name="ID_Cliente_Utente" seq="1"/>
+        </index>
+        <index name="Email">
+            <field name="Email" seq="1"/>
+        </index>
+
+    </table>
+
+
+    <table name="INT_Utenti_Aut" config="true" dbobject="UserAuth">
+        <field name="Username" type="varchar(50)" null="NO" default="" primary_key="yes"/>
+        <field name="ID_Utente" type="varchar(50)" null="YES" default=""/>
+        <field name="Password" type="varchar(60)" null="YES" default=""/>
+        <field name="Lastlogin" type="datetime" null="YES" default=""/>
+        <field name="IP" type="varchar(15)" null="YES" default=""/>
+        <field name="Ab_Internet" type="smallint(6)" null="NO" default="0"/>
+        <field name="Ab_Vis_Costi" type="smallint(6)" null="NO" default="0"/>
+        <field name="Ultimo_IP" type="varchar(15)" null="YES" default=""/>
+        <field name="Tipo_Menu" type="smallint(6)" null="NO" default="1"/>
+        <field name="Data_Cambio_Password" type="datetime" null="YES" default="NULL"/>
+        <field name="Cod_Lingua" type="varchar(15)" null="NO" default="IT"/>
+        <field name="Parametri_Email" type="text" null="YES" default=""/>
+        <field name="Parametri_Aut" type="text" null="YES" default=""/>
+        <field name="Token_Api" type="varchar(255)" null="YES" default=""/>
+        <field name="Authenticator_Secret" type="varchar(20)" null="YES" default="NULL"/>
+
+        <index name="PRIMARY">
+            <field name="Username" seq="1"/>
+        </index>
+
+        <index name="ID_Utente">
+            <field name="ID_Utente" seq="1"/>
+        </index>
+    </table>
+
+
+    <table name="INT_Utenti_Moduli" config="true">
+        <field name="ID_Utente" type="int(11)" null="NO" default="0" primary_key="yes"/>
+        <field name="ID_Modulo" type="varchar(50)" null="NO" default="" primary_key="yes"/>
+        <field name="Parametri" type="varchar(255)" null="YES" default=""/>
+        <field name="Json_User_Params" type="text" null="YES" default=""/>
+
+        <index name="PRIMARY">
+            <field name="ID_Utente" seq="1"/>
+            <field name="ID_Modulo" seq="2"/>
+        </index>
+
+    </table>
+
+
 
 </schema>
 
