@@ -154,7 +154,7 @@ class ModuliRepository
 
                 }
 
-                gerp_display_success('Modulo <a href="'. $_SERVER['PHP_SELF'] .'?manage='. $id .'">%s</a> installato correttamente',[$descrizione]);
+                \Opengerp\Core\Console\Console::appendSuccess('Modulo <a href="'. $_SERVER['PHP_SELF'] .'?manage='. $id .'">%s</a> installato correttamente',[$descrizione]);
 
 
                 return true;
@@ -292,8 +292,8 @@ class ModuliRepository
 
 
                             $obj_status_configurator->salva_stato($vett_status, 'insert');
-                            gerp_display_success('Stato %s configurato correttamente', [$vett_status['Descrizione']]);
 
+                            \Opengerp\Core\Console\Console::appendSuccess('Stato %s configurato correttamente', [$vett_status['Descrizione']]);
                         }
 
 

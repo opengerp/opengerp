@@ -40,3 +40,4 @@ $update->checkDatabaseSchema("./database/schema/schema.xml");
 $base_modules_repo = new \Opengerp\System\ModuliRepository('./src/Modules/Users/Config/module.xml');
 $base_modules_repo->checkModules();
 
+\Opengerp\System\MenuItems::checkTableMenu('./config/modules/core.menu.xml');
