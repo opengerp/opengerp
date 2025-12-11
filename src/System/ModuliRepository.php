@@ -108,7 +108,7 @@ class ModuliRepository
                 $db_mod->Controller = $controller;
                 $db_mod->Get_Vars = $get_var;
                 $db_mod->Json_Config = $json_parameters;
-                
+
                 $db_mod->insert();
 
 

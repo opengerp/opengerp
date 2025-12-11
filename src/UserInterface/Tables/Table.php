@@ -9,9 +9,13 @@ class Table implements TableInterface
 
     public $rows = [];
 
-    public function addColumn(string $key, ?string $des, $type = 'string'): TableColumn
+    public function addColumn(string $key, ?string $des = '', $type = 'string'): TableColumn
     {
 
+
+        if (!$des) {
+            $des = $key;
+        }
 
         $col = new TableColumn();
         $col->key = $key;
