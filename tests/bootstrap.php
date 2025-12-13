@@ -41,3 +41,4 @@ $base_modules_repo = new \Opengerp\System\ModuliRepository('./src/Modules/Users/
 $base_modules_repo->checkModules();
 
 \Opengerp\System\MenuItems::checkTableMenu('./config/modules/core.menu.xml');
+\Opengerp\System\Installer\Seeder::checkAdministratorUser();

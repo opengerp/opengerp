@@ -303,7 +303,7 @@ class Config
     public static function getSystemNotifierEmailConfiguration()
     {
 
-        $vett_azienda = carica_vett_azienda();
+        $vett_azienda = \Opengerp\App\Com();
 
         $mail_conf = new \Gerp\Core\Mailer\Config();
         $mail_conf->email = 'notificatore@gerp.it';

@@ -2,7 +2,8 @@
 
 namespace Opengerp\Modules\Users\Service;
 
-use Gerp\Utenti\Roles;
+use Opengerp\App\Config;
+use \Opengerp\Modules\Users\Domain\Roles;
 
 class Utente
 {
@@ -192,15 +193,15 @@ class Utente
         FROM INT_Utenti_Aut  WHERE ID_Utente='$utente'");
 
 
-        if (!$lin_m = gsql_fetch_array($ris_m)) {
+        if (!$lin_m = gsql_fetch_assoc($ris_m)) {
 
-            if (Gerp_Config::get('amm_ute', 'max_active_users') > 0) {
+            if (\Opengerp\App\Config::get('amm_ute', 'max_active_users') > 0) {
 
                 $ris_controllo = gsql_query("SELECT COUNT(ID_Utente) AS Numero FROM INT_Utenti_Aut ");
 
                 if ($lin_controllo = gsql_fetch_assoc($ris_controllo)) {
-                    if ($lin_controllo['Numero'] >= Gerp_Config::get('amm_ute', 'max_active_users')) {
-                        \Gerp\Core\Console\Console::appendError('Superati numero di utenti attivi concessi: %d', [Gerp_Config::get('amm_ute', 'max_active_users')]);
+                    if ($lin_controllo['Numero'] >= Config::get('amm_ute', 'max_active_users')) {
+                        \Opengerp\Core\Console\Console::appendError('Superati numero di utenti attivi concessi: %d', [Gerp_Config::get('amm_ute', 'max_active_users')]);
                         return false;
                     }
                 }
@@ -208,7 +209,7 @@ class Utente
             }
 
 
-            $dbo = new \Gerp\Core\DbObjects\UserAuth();
+            $dbo = new \Opengerp\Core\DbObjects\UserAuth();
             $dbo->ID_Utente = $utente;
             $dbo->Username = $str_username;
             $dbo->Password = $str_password;
@@ -223,7 +224,7 @@ class Utente
         }
 
 
-        $dbo = new \Gerp\Core\DbObjects\UserAuth();
+        $dbo = new \Opengerp\Core\DbObjects\UserAuth();
         $dbo->loadById($str_username);
         $dbo->Username = $str_username;
         $dbo->Cod_Lingua = $cod_lingua;
@@ -239,7 +240,7 @@ class Utente
 
         //recovery of user parameters e.g. column customization
         $vett_user_params = [];
-        $csv_moduli = Gerp_Array::toStringCsv($vett['vett_moduli']);
+        $csv_moduli = \Opengerp\Utils\Arrays\Helper::toStringCsv($vett['vett_moduli']);
         if ($csv_moduli != '') {
             $ris = gsql_query(
                 "SELECT ID_Modulo, Json_User_Params FROM INT_Utenti_Moduli WHERE ID_Utente='$utente' AND ID_Modulo IN ($csv_moduli) "
@@ -831,30 +832,30 @@ class Utente
         }
 
 
-        if ($data_nascita && !\Gerp\Utils\Filters::isDateDaysMonthYear($data_nascita)) {
+        if ($data_nascita && !\Opengerp\Utils\Filters::isDateDaysMonthYear($data_nascita)) {
 
-            \Gerp\Core\Console\Console::appendError("Data di nascita in un formato non valido");
+            \Opengerp\Core\Console\Console::appendError("Data di nascita in un formato non valido");
             return false;
 
         }
 
 
         if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            \Gerp\Core\Console\Console::appendError('Email non valida.');
+            \Opengerp\Core\Console\Console::appendError('Email non valida.');
             $email = false;
 
         }
 
         if ($email2 && !filter_var($email2, FILTER_VALIDATE_EMAIL)) {
-            \Gerp\Core\Console\Console::appendError('Email 2 non valida.');
+            \Opengerp\Core\Console\Console::appendError('Email 2 non valida.');
             $email2 = false;
 
         }
 
-        $stato_utente = \Gerp\Utils\Filters::filterInt($stato_utente);
+        $stato_utente = \Opengerp\Utils\Strings\Filters::filterInt($stato_utente);
 
         if (!($stato_utente)) {
-            \Gerp\Core\Console\Console::appendError('Stato non valido.');
+            \Opengerp\Core\Console\Console::appendError('Stato non valido.');
 
             return false;
         }
@@ -862,10 +863,10 @@ class Utente
 
         $utente = $this->id;
 
-        $str_activation = \Gerp\Utenti\Auth\PasswordHelper::gerp_make_password();
+        $str_activation = \Opengerp\Modules\Users\Domain\PasswordHelper::gerp_make_password();
 
         //recovery of user parameters e.g. theme
-        if ($vett_utente = \Gerp\Utenti\UsersRepository::fetchById($utente)) {
+        if ($vett_utente = \Opengerp\Modules\Users\Repository\UsersRepository::fetchById($utente)) {
 
             $param_utente = json_decode($vett_utente['Json_Utente'], true);
             $vett_attributes = array_merge($param_utente, $vett_attributes);
@@ -875,7 +876,7 @@ class Utente
 
 
         // inserimento
-        $dbo = new \Gerp\Core\DbObjects\User();
+        $dbo = new \Opengerp\Core\DbObjects\User();
 
         $dbo->Nome = $nome;
         $dbo->Cognome = $cognome;
