@@ -389,9 +389,11 @@ abstract class DbObject
 
         foreach ($data as $k => $v) {
 
-            if ($this->_columns[$k]->type == Column::TYPE_INT ||
+            if (isset($this->_columns[$k]) && (
+                $this->_columns[$k]->type == Column::TYPE_INT ||
                 $this->_columns[$k]->type == Column::TYPE_DOUBLE ||
-                $this->_columns[$k]->type == Column::TYPE_FLOAT) {
+                $this->_columns[$k]->type == Column::TYPE_FLOAT )
+            ) {
 
                 $query .= $k . " = " . $v;
 
