@@ -24,7 +24,7 @@ final class PdoAdapter implements DbAdapter
 
         } catch (\PDOException $e) {
             // Info “grezze”
-            error_log('PDO ERROR: '.$e->getMessage());
+            error_log('PDO ERROR: '.$e->getMessage().' Query: '.$sql);
             throw $e; // o rethrow con messaggio arricchito
         }
 
