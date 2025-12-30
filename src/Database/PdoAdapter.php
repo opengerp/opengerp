@@ -29,7 +29,7 @@ final class PdoAdapter implements DbAdapter
 
             throw new \PDOException($msg, (int)$e->getCode(), $e);
 
-            
+
         }
 
 
