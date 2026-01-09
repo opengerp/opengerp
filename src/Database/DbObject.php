@@ -162,7 +162,7 @@ abstract class DbObject
         $db = $this->getDb();
         $table_name = $this->getTableName();
 
-        $query = "INSERT INTO $table_name ( ";
+        $query = "INSERT INTO $table_name (";
 
         $vett_columns = [];
         $vett_values = [];
@@ -181,86 +181,111 @@ abstract class DbObject
 
 
             $vett_columns[] = $k;
-
+            
+            $value_is_null = false;
 
             if (isset($this->_columns[$k]) && $v === null && $this->_columns[$k]->null) {
 
-                $vett_values[] = 'NULL';
+                $value_is_null = true;
+                $v = 'NULL';
 
-            } else {
+            }
 
+
+            if ( ! isset($this->_columns[$k]) ) {
 
                 $type = (new \ReflectionProperty($this, $k))->getType();
                 $isInt = ($type instanceof \ReflectionNamedType) && $type->getName() === 'int';
+                $isNullable = ($type instanceof \ReflectionNamedType) && $type->allowsNull();
 
 
-
-                if (
-                    (isset($this->_columns[$k]) && $this->_columns[$k]->type == Column::TYPE_INT)
-                    || $isInt
-                    
-                ) {
-
-                    if ($v === '' || $v === null) {
-                        $v = $this->_columns[$k]->default;
-                    }
+                if ($isInt && !$isNullable) {
 
                     $v = Filters::filterInt($v);
 
-
                 }
 
-                if (isset($this->_columns[$k]) && in_array($this->_columns[$k]->type, [Column::TYPE_DECIMAL, Column::TYPE_DOUBLE, Column::TYPE_FLOAT])) {
-                    $v = Filters::filterDecimal($v);
-                }
+                if ($isInt && $isNullable) {
 
-
-
-
-                if (isset($this->_columns[$k])
-                    && $this->_columns[$k]->type == Column::TYPE_DATETIME
-                    && $this->_columns[$k]->default == Column::DEFAULT_NOW
-                    && !$v)
-                {
-                    $v = date('Y-m-d H:i:s');
-                }
-
-                if (isset($this->_columns[$k])
-                    && $this->_columns[$k]->type == Column::TYPE_DATE
-                    && $this->_columns[$k]->default == Column::DEFAULT_NOW
-                    && !$v)
-                {
-                    $v = date('Y-m-d');
-                }
-
-                if (isset($this->_columns[$k])
-                    && $this->_columns[$k]->type == Column::TYPE_DATETIME
-                    && $this->_columns[$k]->null
-                    && $v === '')  {
-
-                    $vett_values[] = 'NULL';
-
-                } else {
-
-                    $v = $db->escape_string($v);
-                    $vett_values[] = "'" . $v . "'";
+                    if ($v === null) {
+                        $value_is_null = true;
+                        $v = 'NULL';
+                    } else {
+                        $v = Filters::filterInt($v);
+                    }
 
                 }
-
 
 
             }
 
 
+            if (
+                (isset($this->_columns[$k]) && $this->_columns[$k]->type == Column::TYPE_INT)
+
+
+            ) {
+
+                if ($v === '' || $v === null) {
+                    $v = $this->_columns[$k]->default;
+                }
+
+                $v = Filters::filterInt($v);
+
+
+            }
+
+
+
+            if (isset($this->_columns[$k]) && in_array($this->_columns[$k]->type, [Column::TYPE_DECIMAL, Column::TYPE_DOUBLE, Column::TYPE_FLOAT])) {
+                $v = Filters::filterDecimal($v);
+            }
+
+
+            if (isset($this->_columns[$k])
+                && $this->_columns[$k]->type == Column::TYPE_DATETIME
+                && $this->_columns[$k]->default == Column::DEFAULT_NOW
+                && !$v)
+            {
+                $v = date('Y-m-d H:i:s');
+            }
+
+            if (isset($this->_columns[$k])
+                && $this->_columns[$k]->type == Column::TYPE_DATE
+                && $this->_columns[$k]->default == Column::DEFAULT_NOW
+                && !$v)
+            {
+                $v = date('Y-m-d');
+            }
+
+            if ($value_is_null) {
+                $vett_values[] = 'NULL';
+
+            } else if (isset($this->_columns[$k])
+                && $this->_columns[$k]->type == Column::TYPE_DATETIME
+                && $this->_columns[$k]->null
+                && $v === '')  {
+
+                $vett_values[] = 'NULL';
+
+            } else {
+
+                $v = $db->escape_string($v);
+                $vett_values[] = "'" . $v . "'";
+
+            }
+
+
+
         }
 
-        $query .= implode(',', $vett_columns);
+        $query .= implode(', ', $vett_columns);
 
         $query .= ') VALUES (';
 
-        $query .= implode(',', $vett_values);
+        $query .= implode(', ', $vett_values);
 
-        $query .= ' ) ';
+        $query .= ') ';
 
         return $query;
 

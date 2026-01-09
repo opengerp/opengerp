@@ -694,14 +694,12 @@ class Utente
             return false;
         }
 
-        $ris = gsql_query("SELECT * FROM INT_Utenti WHERE ID = '$this->id'");
-        if (!$lin = gsql_fetch_array($ris)) {
-
+        $dbo = new \Opengerp\Core\DbObjects\User();
+        if (!$dbo->loadById($this->id)) {
             return false;
-
         }
 
-        $this->vett_dati = $lin;
+        $this->vett_dati = $dbo->toArray();
 
         return true;
 
