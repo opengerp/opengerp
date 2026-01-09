@@ -181,7 +181,7 @@ abstract class DbObject
 
 
             $vett_columns[] = $k;
-            
+
             $value_is_null = false;
 
             if (isset($this->_columns[$k]) && $v === null && $this->_columns[$k]->null) {
@@ -207,7 +207,7 @@ abstract class DbObject
 
                 if ($isInt && $isNullable) {
 
-                    if ($v === null) {
+                    if ($v === null || $v === '') {
                         $value_is_null = true;
                         $v = 'NULL';
                     } else {
