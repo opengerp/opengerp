@@ -60,8 +60,27 @@ abstract class DbObject
             if (property_exists($this, $k)) {
 
 
-                $this->$k = $v;
 
+
+
+                $rp = new \ReflectionProperty($this, $k);
+                $type = $rp->getType();
+
+                if ($type instanceof \ReflectionNamedType && $type->getName() === 'int') {
+
+
+                    // se ?int e valore null / '' -> null
+                    if ($type->allowsNull() && ($v === null || $v === '')) {
+                        $this->$k = null;
+                    } else {
+                        $this->$k = (int) $v;
+                    }
+
+                    continue;
+                }
+
+                
+                $this->$k = $v;
 
                 if (isset($this->_columns[$k]) && $this->_columns[$k]->type == Column::TYPE_JSON) {
 
