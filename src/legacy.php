@@ -9,20 +9,20 @@ function gsql_query(string $query) : \Opengerp\Database\DbResult
 
 }
 
-function gsql_fetch_assoc(\Opengerp\Database\DbResult $ris)
+function gsql_fetch_assoc(\Opengerp\Database\DbResult $ris) : ?array
 {
 
     return $ris->fetch();
 
 }
-function gsql_fetch_array(\Opengerp\Database\DbResult $ris)
+function gsql_fetch_array(\Opengerp\Database\DbResult $ris) : ?array
 {
 
     return $ris->fetch();
 
 }
 
-function trans($string, $params = [])
+function trans(?string $string, array $params = []) : ?string
 {
     global $obj_translator;
 

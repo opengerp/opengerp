@@ -41,9 +41,9 @@ class SchemaUpdater
     {
 
 
-        if (!file_exists($file_schema)) {
+        if ( ! file_exists($file_schema)) {
 
-            $this->printLogLine("File schema db $file_schema non corretto");
+            $this->printLogLine("File schema db $file_schema non trovato");
             return false;
 
         }
@@ -53,6 +53,11 @@ class SchemaUpdater
         // controlla il database
         $obj_schema = simplexml_load_file($file_schema);
 
+        if (!$obj_schema) {
+            $this->printLogLine("File schema db $file_schema non valido");
+            return false;
+
+        }
 
         return $obj_schema;
 
