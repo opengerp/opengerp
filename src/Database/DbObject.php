@@ -190,7 +190,16 @@ abstract class DbObject
             } else {
 
 
-                if (isset($this->_columns[$k]) && $this->_columns[$k]->type == Column::TYPE_INT) {
+                $type = (new \ReflectionProperty($this, $k))->getType();
+                $isInt = ($type instanceof \ReflectionNamedType) && $type->getName() === 'int';
+
+
+
+                if (
+                    (isset($this->_columns[$k]) && $this->_columns[$k]->type == Column::TYPE_INT)
+                    || $isInt
+                    
+                ) {
 
                     if ($v === '' || $v === null) {
                         $v = $this->_columns[$k]->default;
