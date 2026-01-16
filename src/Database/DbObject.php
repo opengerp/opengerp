@@ -79,7 +79,7 @@ abstract class DbObject
                     continue;
                 }
 
-                
+
                 $this->$k = $v;
 
                 if (isset($this->_columns[$k]) && $this->_columns[$k]->type == Column::TYPE_JSON) {

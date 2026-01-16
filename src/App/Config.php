@@ -222,12 +222,8 @@ class Config
 
     public static function getItemModule($cod_module)
     {
-        $ris = gsql_query("SELECT * FROM ART_Moduli WHERE Progressivo = '$cod_module' ");
-
-        if ($lin = gsql_fetch_assoc($ris)) {
-
-            return $lin;
-
+        if (isset(self::$vett_config_modules[$cod_module])) {
+            return self::$vett_config_modules[$cod_module];
         }
 
         return null;
