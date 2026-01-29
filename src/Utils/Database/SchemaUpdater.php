@@ -93,7 +93,11 @@ class SchemaUpdater
                     }
 
                     if (isset($children['default']) && $children['type']!='text') {
-                        if ($children['default'] == 'NULL' || ($children['default'] == '' && strtolower($children['null']) == 'yes')) {
+
+                        if ($children['default'] == 'CURRENT_TIMESTAMP') {
+                            $str_sql .= " DEFAULT $children[default] ";
+                        } else     if ($children['default'] == 'NULL'
+                            || ($children['default'] == '' && strtolower($children['null']) == 'yes')) {
                             $str_sql .= " DEFAULT NULL ";
                         } else {
                             $str_sql .= " DEFAULT '$children[default]' ";
