@@ -92,14 +92,25 @@ class SchemaUpdater
                         $str_sql .= " NOT NULL";
                     }
 
-                    if (isset($children['default'])) {
-                        //  $str_sql .= " DEFAULT '$children[default]' ";
+                    if (isset($children['default']) && $children['type']!='text') {
+                        if ($children['default'] == 'NULL' || ($children['default'] == '' && strtolower($children['null']) == 'yes')) {
+                            $str_sql .= " DEFAULT NULL ";
+                        } else {
+                            $str_sql .= " DEFAULT '$children[default]' ";
+                        }
+
                     }
 
-                    if (isset($children['extra'])) {
+                    if (isset($children['primary_key']) && strtolower($children['primary_key']) == 'yes') {
+
+                        $primary_key_field = $children['name'];
+                    }
+
+                    if (isset($children['extra']) && strtolower($children['extra']) == 'auto_increment') {
                         $str_sql .= "  AUTO_INCREMENT ";
                         $primary_key_field = $children['name'];
                     }
+
                     $str_sql .= ", ";
 
                 }

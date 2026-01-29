@@ -1,6 +1,6 @@
 <schema>
     <table name="INT_Moduli" config="true" dbobject="Moduli">
-        <field name="ID" type="varchar(20)" null="NO" default="" primary_key="yes"/>
+        <field name="ID" type="varchar(20)" null="NO"  primary_key="yes"/>
         <field name="Descrizione" type="varchar(255)" null="NO" default=""/>
         <field name="Descrizione_Ext" type="text" null="YES" default=""/>
         <field name="Path" type="varchar(255)" null="YES" default="" comment="obsoleto"/>
@@ -21,8 +21,8 @@
     </table>
 
     <table name="INT_Moduli_Lang" config="true">
-        <field name="ID_Modulo" type="varchar(20)" null="NO" default="" primary_key="yes"/>
-        <field name="Cod_Lingua" type="char(2)" null="NO" default="" primary_key="yes"/>
+        <field name="ID_Modulo" type="varchar(20)" null="NO"  primary_key="yes"/>
+        <field name="Cod_Lingua" type="char(2)" null="NO"  primary_key="yes"/>
         <field name="Descrizione" type="varchar(255)" null="NO" default=""/>
         <field name="Voce_Menu" type="varchar(255)" null="NO" default=""/>
 
@@ -49,13 +49,13 @@
     </table>
 
     <table name="INT_Utenti" config="true" entity="Users" dbobject="Users">
-        <field name="ID" type="int(11)" null="NO" default="" primary_key="yes" extra="auto_increment"/>
+        <field name="ID" type="int(11)" null="NO"  primary_key="yes" extra="auto_increment"/>
         <field name="Nome" type="varchar(50)" null="YES" default=""/>
         <field name="Cognome" type="varchar(50)" null="YES" default=""/>
         <field name="Titolo" type="varchar(50)" null="YES" default=""/>
         <field name="Des_Azienda" type="varchar(255)" null="YES" default=""/>
         <field name="Azienda" type="char(1)" null="YES" default="NULL" comment="obsoleto"/>
-        <field name="ID_Cliente_Utente" type="int(11)" null="YES" default=""/>
+        <field name="ID_Cliente_Utente" type="int(11)" null="YES" default="NULL"/>
 
         <field name="Data_Nascita" type="varchar(50)" null="YES" default=""/>
         <field name="Cod_Localita_Nas" type="varchar(20)" null="YES" default=""/>
@@ -79,12 +79,12 @@
         <field name="Email_Intranet" type="varchar(127)" null="YES" default=""/>
         <field name="Note_Utente" type="varchar(255)" null="YES" default=""/>
         <field name="ID_Role" type="int(11)" null="NO" default="0"/>
-        <field name="ID_Reparto" type="int(11)" null="YES" default=""/>
-        <field name="Stato_Utente" type="smallint(6)" null="YES" default=""/>
-        <field name="Utente" type="int(11)" null="YES" default=""/>
+        <field name="ID_Reparto" type="int(11)" null="YES" default="NULL"/>
+        <field name="Stato_Utente" type="smallint(6)" null="YES" default="NULL"/>
+        <field name="Utente" type="int(11)" null="YES" default="NULL"/>
         <field name="Str_Activation" type="varchar(255)" null="YES" default=""/>
-        <field name="Date_Inserted" type="datetime" null="YES" default=""/>
-        <field name="Data_Ultimo_Agg" type="datetime" null="YES" default=""/>
+        <field name="Date_Inserted" type="datetime" null="YES" default="NULL"/>
+        <field name="Data_Ultimo_Agg" type="datetime" null="YES" default="NULL"/>
 
         <field name="Json_Utente" type="text" null="YES" default=""/>
 
