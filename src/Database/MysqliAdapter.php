@@ -16,12 +16,20 @@ final class MysqliAdapter implements DbAdapter
 
     public function query(string $sql, array $params = []): DbResult
     {
+        
         try {
             $st = $this->mysqli->query($sql);
-
-        } catch (\Exception $e) {
-
-            throw new \Exception($sql);
+        } catch (\mysqli_sql_exception $e) {
+            throw new \RuntimeException(
+                sprintf(
+                    "DB error (%d): %s\nSQL: %s",
+                    $e->getCode(),
+                    $e->getMessage(),
+                    $sql
+                ),
+                0,
+                $e
+            );
         }
 
         if ( ! ($st instanceof \mysqli_result) ) {
