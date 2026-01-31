@@ -35,6 +35,19 @@
     </table>
 
 
+    <table name="ARC_Impianti_Reset" dbobject="ItemPlatesReset" config="false">
+        <field name="ID" type="int(11)" null="NO" default="" primary_key="yes" extra="auto_increment"/>
+        <field name="ID_Articolo_Impianto" type="int" null="NO" default="0" />
+        <field name="Cod_Articolo_Impianto" type="varchar(50)" null="NO" default="" />
+        <field name="Data_Reset" type="datetime" null="NO"  />
+        <field name="Battute_Totali" type="int" null="NO" default="0" />
+        <field name="Date_Last_Used" type="datetime" null="NO"  />
+        <field name="Count_Used" type="int" null="NO" default="0" />
+        <field name="Note_Reset" type="text" null="NO" default="" />
+        <field name="Utente_Reset" type="int" null="NO" default="0" />
+
+    </table>
+
     <table name="INT_Menu" config="true" dbobject="MenuItems">
         <field name="ID_Menu" type="varchar(255)" null="NO" default="" primary_key="yes"/>
         <field name="Voce_Menu" type="varchar(255)" null="NO" default=""/>
