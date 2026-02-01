@@ -7,9 +7,13 @@ final class MysqliResult implements DbResult
 {
     private ?\mysqli_result $result = null;
 
+    public int $num_rows = 0;
+
     public function __construct(?\mysqli_result $result)
     {
         $this->result = $result;
+
+        $this->num_rows = $this->result->num_rows;
 
     }
 

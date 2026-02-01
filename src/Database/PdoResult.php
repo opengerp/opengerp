@@ -14,7 +14,7 @@ final class PdoResult implements DbResult
     private array $it = [];
     private int $itPos = 0;
 
-
+    public int $num_rows = 0;
 
     public function __construct(\PDOStatement $stmt)
     {
