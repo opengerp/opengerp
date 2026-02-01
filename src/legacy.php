@@ -21,6 +21,12 @@ function gsql_fetch_array(\Opengerp\Database\DbResult $ris) : ?array
     return $ris->fetch();
 
 }
+function gsql_num_rows(\Opengerp\Database\DbResult $ris) : int
+{
+
+    return $ris->num_rows();
+
+}
 
 function trans(?string $string, array $params = []) : ?string
 {
