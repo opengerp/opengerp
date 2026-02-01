@@ -13,7 +13,8 @@ final class MysqliResult implements DbResult
     {
         $this->result = $result;
 
-        $this->num_rows = $this->result->num_rows;
+
+        $this->num_rows = $this->result->num_rows ?? 0;
 
     }
 
