@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules>
+    <!-- IVA 22% -->
+    <DOC_Iva>
+        <Cod_Iva>22</Cod_Iva>
+        <Des_Iva>22%</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>1</Ab_Iva_Default>
+    </DOC_Iva>
+
+    <!-- IVA 10% -->
+    <DOC_Iva>
+        <Cod_Iva>10</Cod_Iva>
+        <Des_Iva>10%</Des_Iva>
+        <Perc_Iva>10</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+    </DOC_Iva>
+
+    <!-- IVA 4% -->
+    <DOC_Iva>
+        <Cod_Iva>4</Cod_Iva>
+        <Des_Iva>4%</Des_Iva>
+        <Perc_Iva>4</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+    </DOC_Iva>
+
+    <!-- Natura IVA N1 -->
+    <DOC_Iva>
+        <Cod_Iva>N1</Cod_Iva>
+        <Des_Iva>Escluse ex art.15</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N1","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N2.1 -->
+    <DOC_Iva>
+        <Cod_Iva>N2.1</Cod_Iva>
+        <Des_Iva>Non soggette ad IVA ai sensi degli artt. da 7 a 7-septies del DPR 633/72</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N2.1","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N2.2 -->
+    <DOC_Iva>
+        <Cod_Iva>N2.2</Cod_Iva>
+        <Des_Iva>Non soggette - altri casi</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N2.2","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N3.1 -->
+    <DOC_Iva>
+        <Cod_Iva>N3.1</Cod_Iva>
+        <Des_Iva>Non imponibili - esportazioni</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N3.1","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N3.2 -->
+    <DOC_Iva>
+        <Cod_Iva>N3.2</Cod_Iva>
+        <Des_Iva>Non imponibili - cessioni intracomunitarie</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N3.2","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N3.3 -->
+    <DOC_Iva>
+        <Cod_Iva>N3.3</Cod_Iva>
+        <Des_Iva>Non imponibili - cessioni verso San Marino</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N3.3","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N3.4 -->
+    <DOC_Iva>
+        <Cod_Iva>N3.4</Cod_Iva>
+        <Des_Iva>Non imponibili - operazioni assimilate alle cessioni all\'esportazione</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N3.4","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N3.5 -->
+    <DOC_Iva>
+        <Cod_Iva>N3.5</Cod_Iva>
+        <Des_Iva>Non imponibili - a seguito di dichiarazioni d\'intento</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N3.5","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N3.6 -->
+    <DOC_Iva>
+        <Cod_Iva>N3.6</Cod_Iva>
+        <Des_Iva>Non imponibili - altre operazioni che non concorrono alla formazione del plafond</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N3.6","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N4 -->
+    <DOC_Iva>
+        <Cod_Iva>N4</Cod_Iva>
+        <Des_Iva>Esenti</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N4","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N5 -->
+    <DOC_Iva>
+        <Cod_Iva>N5</Cod_Iva>
+        <Des_Iva>Regime del margine / IVA non esposta in fattura</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N5","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N6.1 -->
+    <DOC_Iva>
+        <Cod_Iva>N6.1</Cod_Iva>
+        <Des_Iva>Inversione contabile - cessione di rottami e altri materiali di recupero</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N6.1","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N6.2 -->
+    <DOC_Iva>
+        <Cod_Iva>N6.2</Cod_Iva>
+        <Des_Iva>Inversione contabile - cessione di oro e argento puro</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N6.2","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N6.3 -->
+    <DOC_Iva>
+        <Cod_Iva>N6.3</Cod_Iva>
+        <Des_Iva>Inversione contabile - subappalto nel settore edile</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N6.3","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N6.4 -->
+    <DOC_Iva>
+        <Cod_Iva>N6.4</Cod_Iva>
+        <Des_Iva>Inversione contabile - cessione di fabbricati</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N6.4","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N6.5 -->
+    <DOC_Iva>
+        <Cod_Iva>N6.5</Cod_Iva>
+        <Des_Iva>Inversione contabile - cessione di telefoni cellulari</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N6.5","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N6.6 -->
+    <DOC_Iva>
+        <Cod_Iva>N6.6</Cod_Iva>
+        <Des_Iva>Inversione contabile - cessione di prodotti elettronici</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N6.6","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N6.7 -->
+    <DOC_Iva>
+        <Cod_Iva>N6.7</Cod_Iva>
+        <Des_Iva>Inversione contabile - prestazioni comparto edile e settori connessi</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N6.7","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N6.8 -->
+    <DOC_Iva>
+        <Cod_Iva>N6.8</Cod_Iva>
+        <Des_Iva>Inversione contabile - operazioni settore energetico</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N6.8","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N6.9 -->
+    <DOC_Iva>
+        <Cod_Iva>N6.9</Cod_Iva>
+        <Des_Iva>Inversione contabile - altri casi</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N6.9","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- Natura IVA N7 -->
+    <DOC_Iva>
+        <Cod_Iva>N7</Cod_Iva>
+        <Des_Iva>IVA assolta in altro stato UE (prestazione di servizi di telecomunicazioni, tele-radiodiffusione ed elettronici ex art. 7-sexies lett. f, g, art. 74-sexies DPR 633/72)</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N7","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!-- SPLIT PAYMENT -->
+    <DOC_Iva>
+        <Cod_Iva>SPLIT</Cod_Iva>
+        <Des_Iva>IVA in split payment</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"S"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!--TD16-->
+    <DOC_Iva>
+        <Cod_Iva>TD16</Cod_Iva>
+        <Des_Iva>Integrazione fattura reverse charge interno</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"I","tipo_documento_ae":"TD16"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!--TD17-->
+    <DOC_Iva>
+        <Cod_Iva>TD17</Cod_Iva>
+        <Des_Iva>Integrazione/autofattura per acquisto servizi dall estero</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"I","tipo_documento_ae":"TD17"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!--TD18-->
+    <DOC_Iva>
+        <Cod_Iva>TD18</Cod_Iva>
+        <Des_Iva>Integrazione/autofattura per acquisto beni intracomunitari</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"I","tipo_documento_ae":"TD18"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!--TD19-->
+    <DOC_Iva>
+        <Cod_Iva>TD19</Cod_Iva>
+        <Des_Iva>Integrazione/autofattura per acquisto di beni ex art.17 c.2 DPR 633/72</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"I","tipo_documento_ae":"TD19"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!--TD20-->
+    <DOC_Iva>
+        <Cod_Iva>TD20</Cod_Iva>
+        <Des_Iva>Autofattura per regolarizzazione e integrazione delle fatture (ex art.6 c.8 d.lgs. 471/97 o art.46 c.5 D.L. 331/93)</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"I","tipo_documento_ae":"TD20"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!--TD21-->
+    <DOC_Iva>
+        <Cod_Iva>TD21</Cod_Iva>
+        <Des_Iva>Autofattura per splafonamento</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"I","tipo_documento_ae":"TD21"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!--TD22-->
+    <DOC_Iva>
+        <Cod_Iva>TD22</Cod_Iva>
+        <Des_Iva>Estrazione beni da deposito IVA</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"I","tipo_documento_ae":"TD22"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!--TD23-->
+    <DOC_Iva>
+        <Cod_Iva>TD23</Cod_Iva>
+        <Des_Iva>Estrazione beni da deposito IVA con versamento dell’IVA</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"I","tipo_documento_ae":"TD23"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!--TD26-->
+    <DOC_Iva>
+        <Cod_Iva>TD26</Cod_Iva>
+        <Des_Iva>Cessione di beni ammortizzabili e per passaggi interni (ex art.36 DPR 633/72)</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"I","tipo_documento_ae":"TD26"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+    <!--TD27-->
+    <DOC_Iva>
+        <Cod_Iva>TD27</Cod_Iva>
+        <Des_Iva>Fattura per autoconsumo o per cessioni gratuite senza rivalsa</Des_Iva>
+        <Perc_Iva>22</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"esigibilita":"I","tipo_documento_ae":"TD27"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+
+    <!--TD27-->
+    <DOC_Iva>
+        <Cod_Iva>M02</Cod_Iva>
+        <Des_Iva>Art.1, commi 54-89, L.190/14 (Forfetari)</Des_Iva>
+        <Perc_Iva>0</Perc_Iva>
+        <Perc_Indetraibile>0</Perc_Indetraibile>
+        <CEE>0</CEE>
+        <Ab_Iva_Default>0</Ab_Iva_Default>
+        <Json_Dati_Iva>{"natura":"N2.2","esigibilita":"I"}</Json_Dati_Iva>
+    </DOC_Iva>
+
+
+</modules>

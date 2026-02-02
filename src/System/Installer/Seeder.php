@@ -72,6 +72,7 @@ class Seeder
         $db = DbObject::getDefaultDb();
 
         self::runSqlFileWithQuery($db, './database/scripts/accounting.sql');
+        self::runSqlFileWithQuery($db, './database/scripts/countries.sql');
 
 
         /*
@@ -82,23 +83,11 @@ class Seeder
         }
 
         \Gerp\System\ModuliRepository::checkDocuments($documents);
+        */
 
 
-
-
-        if (!file_exists($include_prefix . 'lib/schema/countries.sql')) {
-
-            throw new \Exception('file countries.sql non presente');
-
-        }
-
-
-        $query = file_get_contents($include_prefix . 'lib/schema/countries.sql');
-
-        if (!gsql_query($query)) {
-            gerp_display_warning("INT_Nazioni non popolata, errore");
-        }*/
-
+        self::insertDefaultPaymentTerms();
+        self::insertFirstFiscalYear();
 
     }
     public static function insertDefaultPaymentTerms()
@@ -118,6 +107,20 @@ class Seeder
         \Opengerp\Core\Console\Console::appendSuccess('Condizione di pagamento default: ok');
 
 
+
+    }
+
+    public static function insertFirstFiscalYear()
+    {
+
+        $esercizio = new \Opengerp\Modules\Accounting\DbObjects\AccountsFiscalYear();
+        $esercizio->Num_Esercizio = date('Y');
+        $esercizio->Data_Inizio_Esercizio = date('Y-m').'-01';
+        $esercizio->Utente = 0;
+        if ($esercizio->insert()) {
+            \Opengerp\Core\Console\Console::appendSuccess('Esercizio nuovo: ok');
+
+        }
 
     }
 
