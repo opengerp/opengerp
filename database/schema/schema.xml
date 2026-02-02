@@ -1,5 +1,5 @@
 <schema>
-    <table name="INT_Moduli" config="true" dbobject="Moduli">
+    <table name="INT_Moduli" config="true" dbobject="Moduli" group="opengerp:users">
         <field name="ID" type="varchar(20)" null="NO"  primary_key="yes"/>
         <field name="Descrizione" type="varchar(255)" null="NO" default=""/>
         <field name="Descrizione_Ext" type="text" null="YES" default=""/>
@@ -35,8 +35,8 @@
     </table>
 
 
-    <table name="INT_Menu" config="true" dbobject="MenuItems">
-        <field name="ID_Menu" type="varchar(255)" null="NO" default="" primary_key="yes"/>
+    <table name="INT_Menu" config="true" dbobject="MenuItems" group="opengerp:users">
+        <field name="ID_Menu" type="varchar(255)" null="NO"  primary_key="yes"/>
         <field name="Voce_Menu" type="varchar(255)" null="NO" default=""/>
         <field name="Icon" type="varchar(255)" null="NO" default=""/>
 
@@ -48,7 +48,7 @@
 
     </table>
 
-    <table name="INT_Utenti" config="true" entity="Users" dbobject="Users">
+    <table name="INT_Utenti" config="true" entity="Users" dbobject="Users" group="opengerp:users">
         <field name="ID" type="int(11)" null="NO"  primary_key="yes" extra="auto_increment"/>
         <field name="Nome" type="varchar(50)" null="YES" default=""/>
         <field name="Cognome" type="varchar(50)" null="YES" default=""/>
@@ -102,7 +102,7 @@
     </table>
 
 
-    <table name="INT_Utenti_Aut" config="true" dbobject="UserAuth">
+    <table name="INT_Utenti_Aut" config="true" dbobject="UserAuth" group="opengerp:users">
         <field name="Username" type="varchar(50)" null="NO" default="" primary_key="yes"/>
         <field name="ID_Utente" type="varchar(50)" null="YES" default=""/>
         <field name="Password" type="varchar(60)" null="YES" default=""/>
@@ -129,7 +129,7 @@
     </table>
 
 
-    <table name="INT_Utenti_Moduli" config="true">
+    <table name="INT_Utenti_Moduli" config="true" group="opengerp:users">
         <field name="ID_Utente" type="int(11)" null="NO" default="0" primary_key="yes"/>
         <field name="ID_Modulo" type="varchar(50)" null="NO" default="" primary_key="yes"/>
         <field name="Parametri" type="varchar(255)" null="YES" default=""/>
@@ -142,6 +142,107 @@
 
     </table>
 
+
+    <table name="MAG_Causali" config="true" group="opengerp/accounting">
+        <field name="ID_Causale" type="int(11)" null="NO" default="0" primary_key="yes"/>
+        <field name="Des_Causale" type="varchar(255)" null="YES" default=""/>
+        <field name="Tipo_Controparte" type="smallint(6)" null="YES" default=""/>
+        <field name="Op_Q_Esistente" type="char(1)" null="YES" default=""/>
+        <field name="Op_Q_Impegnata" type="char(1)" null="YES" default=""/>
+        <field name="Op_Q_Ordinata" type="char(1)" null="YES" default=""/>
+        <field name="Ric_Impegno" type="smallint(6)" null="YES" default=""/>
+
+        <index name="PRIMARY">
+            <field name="ID_Causale" seq="1"/>
+        </index>
+
+    </table>
+
+
+
+    <table name="COG_Modelli" config="true" group="opengerp/accounting">
+        <field name="Cod_Modello" type="varchar(100)" null="NO" primary_key="yes"/>
+        <field name="Des_Modello" type="varchar(255)" null="NO" default=""/>
+        <field name="Serie_Modello" type="varchar(10)" null="YES" default="" comment="da usare in caso di serie diverse es. per diversi modelli reverse charge"/>
+        <field name="Operazione" type="int(11)" null="NO" />
+        <field name="Op_Partitario" type="int(11)" null="NO" />
+        <field name="Ric_Documento" type="int(11)" null="NO" />
+        <field name="Tipo" type="varchar(255)" null="NO" default=""/>
+        <field name="Reg_Iva" type="varchar(10)" null="YES" default=""/>
+        <field name="Predefinito" type="smallint(6)" null="NO" default="0"/>
+        <field name="Disabilitato" type="smallint(6)" null="NO" default="0"/>
+        <field name="SegnoIva" type="smallint(6)" null="YES" default=""/>
+        <field name="Cod_Tipo_Anagrafica" type="char(1)" null="YES" default=""/>
+        <field name="Note_Modello" type="varchar(255)" null="YES" default=""/>
+        <field name="Ab_Num_Autonoma" type="smallint(6)" null="NO" default="0"/>
+        <field name="Cod_Modello_Collegato" type="varchar(50)" null="YES" default=""/>
+        <field name="Cod_Numerazione" type="smallint(6)" null="NO" default="1"
+               comment="Codice numerazione per numerazioni comuni a più documenti e modelli"/>
+        <field name="Json_Parametri" type="text" null="YES" />
+
+        <index name="PRIMARY">
+            <field name="Cod_Modello" seq="1"/>
+        </index>
+
+    </table>
+
+    <table name="COG_Modelli_Righe" config="true" group="opengerp/accounting">
+        <field name="Cod_Modello" type="varchar(50)" null="NO"  primary_key="yes"/>
+        <field name="ID_Riga_Modello" type="smallint(6)" null="NO"  primary_key="yes"/>
+        <field name="Cod_Causale_Contabile" type="varchar(50)" null="YES" default="" comment="da eliminare"/>
+
+        <field name="Natura_Conto" type="varchar(20)" null="NO" default=""/>
+        <field name="ID_Cliente" type="int(11)" null="YES" default=""/>
+        <field name="Cod_Conto" type="varchar(50)" null="NO" default=""/>
+        <field name="Tipo_Valore" type="varchar(20)" null="NO" default=""/>
+        <field name="Segno_Riga_Modello" type="varchar(20)" null="NO" default=""/>
+
+        <index name="PRIMARY">
+            <field name="Cod_Modello" seq="1"/>
+            <field name="ID_Riga_Modello" seq="2"/>
+        </index>
+
+    </table>
+
+    <table name="DOC_Mezzitrasporto" config="true" group="opengerp/accouting">
+        <field name="Cod_Mezzotrasporto" type="smallint(6)" null="NO" default="0" primary_key="yes"/>
+        <field name="Des_Mezzotrasporto" type="varchar(50)" null="YES" default=""/>
+        <field name="Cod_Mezzotrasporto_D" type="smallint(6)" null="NO" default="0"/>
+
+        <index name="PRIMARY">
+            <field name="Cod_Mezzotrasporto" seq="1"/>
+        </index>
+
+    </table>
+
+    <table name="COG_Registri" config="true" dbobject="VatRegisters" group="opengerp/accounting">
+        <field name="Cod_Registro" type="varchar(50)" null="NO"  primary_key="yes"/>
+        <field name="Des_Registro" type="varchar(255)" null="NO" />
+        <field name="Tipo_Registro" type="varchar(50)" null="NO" />
+        <field name="Registro_UE" type="smallint(11)" null="NO" default="0"/>
+        <field name="Sezionale" type="int(11)" null="NO" default="1"/>
+        <field name="Utente" type="int(11)" null="NO" />
+
+        <index name="PRIMARY">
+            <field name="Cod_Registro" seq="1"/>
+        </index>
+
+    </table>
+
+    <table name="DOC_Valute" config="true" group="opengerp/accounting">
+        <field name="Cod_Valuta" type="char(3)" null="NO"  primary_key="yes"/>
+        <field name="Des_Valuta" type="varchar(50)" null="NO" />
+        <field name="Cod_Nazione" type="char(3)" null="NO" />
+        <field name="Simbolo_Valuta" type="varchar(10)" null="NO" />
+        <field name="Num_Decimali" type="smallint(6)" null="NO" default="2"/>
+        <field name="Val_Cambio" type="decimal(20,6)" null="NO" default="1"/>
+        <field name="Data_Cambio" type="date" null="YES" default="NULL" />
+
+        <index name="PRIMARY">
+            <field name="Cod_Valuta" seq="1"/>
+        </index>
+
+    </table>
 
 
 </schema>
