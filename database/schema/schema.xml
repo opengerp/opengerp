@@ -324,5 +324,26 @@
     </table>
 
 
+    <table name="DOC_Iva" config="true" dbobject="TaxCodes" group="opengerp/accounting">
+        <field name="Cod_Iva" type="varchar(20)" null="NO" default="" primary_key="yes"/>
+        <field name="Des_Iva" type="varchar(255)" null="YES" default=""/>
+        <field name="Perc_Iva" type="decimal(7,4)" null="YES" default=""/>
+        <field name="Perc_Indetraibile" type="decimal(7,4)" null="NO" default="0"/>
+        <field name="CEE" type="smallint(6)" null="NO" default="0"/>
+        <field name="Ab_Iva_Default" type="smallint(6)" null="NO" default="0"/>
+        <field name="Ab_Iva_Default_Passiva" type="smallint(6)" null="YES" default=""/>
+        <field name="Json_Dati_Iva" type="text" null="YES" default="0"
+               comment="vett_parametri[natura] vedi config_dati_iva"/>
+        <field name="Data_Obsoleto" type="date" null="YES" default='NULL'/>
+
+        <index name="PRIMARY">
+            <field name="Cod_Iva" seq="1"/>
+        </index>
+
+    </table>
+
+
+
+
 </schema>
 

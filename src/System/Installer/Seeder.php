@@ -3,6 +3,7 @@
 namespace Opengerp\System\Installer;
 
 use Opengerp\Database\DbObject;
+use Opengerp\Modules\Accounting\DbObjects\TaxCodes;
 use \Opengerp\Modules\Users\Service\Utente as Utente;
 class Seeder
 {
@@ -73,7 +74,7 @@ class Seeder
 
         self::runSqlFileWithQuery($db, './database/scripts/accounting.sql');
         self::runSqlFileWithQuery($db, './database/scripts/countries.sql');
-
+        self::runSqlFileWithQuery($db, './database/scripts/pianoconti.sql');
 
         /*
         $documents = simplexml_load_file($include_prefix.'lib/schema/gerp_documents.xml');
@@ -88,6 +89,8 @@ class Seeder
 
         self::insertDefaultPaymentTerms();
         self::insertFirstFiscalYear();
+        self::insertTaxCodes('./src/Modules/Accounting/Config/taxcodes.xml');
+
 
     }
     public static function insertDefaultPaymentTerms()
@@ -120,6 +123,31 @@ class Seeder
         if ($esercizio->insert()) {
             \Opengerp\Core\Console\Console::appendSuccess('Esercizio nuovo: ok');
 
+        }
+
+    }
+
+    public static function insertTaxCodes($file_taxcodes)
+    {
+        if ( ! file_exists($file_taxcodes) ) {
+            \Opengerp\Core\Console\Console::appendError("File Codici IVA %s non corretto",[$file_taxcodes]);
+            return false;
+        }
+
+        $obj_schema = simplexml_load_file($file_taxcodes);
+
+        $obj = new TaxCodes();
+
+        foreach ($obj_schema->children() as $module) {
+            $obj->Cod_Iva = $module->Cod_Iva;
+            $obj->Des_Iva = $module->Des_Iva;
+            $obj->Perc_Iva = $module->Perc_Iva;
+            $obj->Perc_Indetraibile = $module->Perc_Indetraibile;
+            $obj->CEE = $module->CEE;
+            $obj->Ab_Iva_Default = $module->Ab_Iva_Default;
+            $obj->Json_Dati_Iva = $module->Json_Dati_Iva;
+
+            $obj->insert();
         }
 
     }
