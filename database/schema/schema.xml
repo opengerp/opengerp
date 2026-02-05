@@ -343,6 +343,45 @@
     </table>
 
 
+    <table name="api_tokens" engine="InnoDB" charset="utf8mb4" collation="utf8mb4_general_ci" dbobject="" group="opengerp/core">
+        <field name="id_api_token" type="int(11) unsigned" null="NO"  primary_key="yes" extra="auto_increment"/>
+        <field name="uid" type="char(32)" null="NO" default="" unique="YES"/>
+        <field name="user_id" type="int(11) unsigned" null="NO" default="0"/>
+        <field name="name" type="varchar(100)" null="NO" default=""/>
+
+        <!-- SHA-256 hex = 64 chars -->
+        <field name="token_hash" type="varchar(64)" null="NO" default=""/>
+
+        <!-- JSON: ["events:read","venues:read"] -->
+        <field name="scopes" type="json" null="NO" />
+
+        <!-- opzionale: piano/limiti -->
+        <field name="rpm" type="smallint(5) unsigned" null="YES" default=""/>
+        <field name="rpd" type="int(10) unsigned" null="YES" default=""/>
+
+        <field name="created_at" type="datetime" null="NO" default="CURRENT_TIMESTAMP"/>
+        <field name="last_used_at" type="datetime" null="YES" default=""/>
+
+        <field name="expires_at" type="datetime" null="YES" default=""/>
+        <field name="revoked_at" type="datetime" null="YES" default=""/>
+
+        <field name="ip_last" type="varchar(45)" null="YES" default=""/>
+        <field name="ua_last" type="varchar(255)" null="YES" default=""/>
+
+        <index name="idx_api_tokens_user" type="index">
+            <col name="user_id"/>
+        </index>
+
+        <index name="idx_api_tokens_token_hash" type="unique">
+            <col name="token_hash"/>
+        </index>
+
+        <index name="idx_api_tokens_status" type="index">
+            <col name="revoked_at"/>
+            <col name="expires_at"/>
+        </index>
+    </table>
+
 
 
 </schema>
