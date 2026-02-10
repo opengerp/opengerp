@@ -245,5 +245,144 @@
     </table>
 
 
+
+    <table name="DOC_Pagamenti" config="true" dbobject="PaymentTerms" group="opengerp/accouting">
+        <field name="Cod_Pagamento" type="varchar(50)" null="NO" default="" primary_key="yes"/>
+        <field name="Cod_Tipo_Pagamento" type="varchar(10)" null="YES" default=""/>
+        <field name="Perc_Sconto_Pagamento" type="double" null="NO" default="0"/>
+        <field name="Des_Pagamento" type="varchar(255)" null="NO" default=""/>
+        <field name="Num_Giorni" type="int(11)" null="YES" default=""/>
+        <field name="Ab_Controllo_Saldo" type="smallint(6)" null="YES" default=""
+               comment="se uguale 1 pagamento anticipato"/>
+        <field name="Giorno_Fisso" type="int(11)" null="YES" default=""/>
+        <field name="Val_Spese_Pag" type="decimal(20,6)" null="YES" default=""/>
+        <field name="Ab_Fine_Mese" type="smallint(1)" null="YES" default=""/>
+        <field name="Ab_Chiusura_Automatica" type="smallint(1)" null="YES" default="" comment="1 per incasso automatico alla conferma documento"/>
+        <field name="Str_Slittamento" type="varchar(255)" null="YES" default=""/>
+        <field name="Default_Pagamento" type="smallint(6)" null="NO" default="0"/>
+        <field name="Str_Parametri" type="text" null="YES" default=""/>
+        <field name="Data_Obsoleto" type="date" null="YES" default=""/>
+
+        <index name="PRIMARY">
+            <field name="Cod_Pagamento" seq="1"/>
+        </index>
+
+    </table>
+
+
+    <table name="DOC_Pagamenti_Righe" config="true" dbobject="DueDates" group="opengerp/accouting">
+        <field name="Cod_Pagamento" type="varchar(50)" null="NO" default="" primary_key="yes"/>
+        <field name="ID_Pagamento_Riga" type="int(11)" null="NO" default="0" primary_key="yes"/>
+        <field name="Giorni_Rata" type="int(11)" null="NO" default="0"/>
+        <field name="Perc_Rata" type="double" null="NO" default="0"/>
+        <field name="Cod_Tipo_Pagamento_Riga" type="varchar(10)" null="YES" default=""/>
+
+        <index name="PRIMARY">
+            <field name="Cod_Pagamento" seq="1"/>
+            <field name="ID_Pagamento_Riga" seq="2"/>
+        </index>
+
+    </table>
+
+
+    <table name="INT_Nazioni" config="true" dbobject="Countries" group="opengerp/core">
+        <field name="Cod_Nazione" type="char(3)" null="NO" default="" primary_key="yes"/>
+        <field name="Des_Nazione" type="varchar(30)" null="NO" default=""/>
+        <field name="Des_Nazione_EN" type="varchar(50)" null="YES" default=""/>
+        <field name="Cod_Iso" type="char(2)" null="YES" default=""/>
+        <field name="Cod_Iso3" type="char(3)" null="NO" default=""/>
+        <field name="Cod_Valuta" type="char(3)" null="YES" default=""/>
+        <field name="Cod_Lingua" type="char(3)" null="YES" default=""/>
+        <field name="P_Iva" type="int(11)" null="YES" default=""/>
+        <field name="Cod_Iva_Default" type="varchar(20)" null="YES" default=""/>
+        <field name="Cod_Cittadinanza" type="char(3)" null="YES" default=""/>
+        <field name="Des_Cittadinanza" type="varchar(50)" null="YES" default=""/>
+        <field name="Des_Nazione_Breve" type="varchar(50)" null="YES" default=""/>
+        <field name="Cee" type="smallint(11)" null="NO" default="0"/>
+        <field name="Blacklist" type="smallint(11)" null="NO" default="0"/>
+        <field name="Cod_Fisco_Italia" type="char(3)" null="YES" default=""/>
+
+
+        <index name="PRIMARY">
+            <field name="Cod_Nazione" seq="1"/>
+        </index>
+
+    </table>
+
+    <table name="COG_Esercizi" dbobject="AccountsFiscalYear" group="opengerp/accounting">
+        <field name="Num_Esercizio" type="smallint(6)" null="NO"  primary_key="yes"/>
+        <field name="Data_Inizio_Esercizio" type="date" null="NO" />
+        <field name="Data_Fine_Esercizio" type="date" null="YES" default=""/>
+        <field name="Stato_Esercizio" type="smallint(6)" null="NO" default="1"/>
+        <field name="Json_Esercizio" type="text" null="YES" default=""/>
+        <field name="Utente" type="int(11)" null="NO" />
+
+        <index name="PRIMARY">
+            <field name="Num_Esercizio" seq="1"/>
+        </index>
+
+    </table>
+
+
+    <table name="DOC_Iva" config="true" dbobject="TaxCodes" group="opengerp/accounting">
+        <field name="Cod_Iva" type="varchar(20)" null="NO" default="" primary_key="yes"/>
+        <field name="Des_Iva" type="varchar(255)" null="YES" default=""/>
+        <field name="Perc_Iva" type="decimal(7,4)" null="YES" default=""/>
+        <field name="Perc_Indetraibile" type="decimal(7,4)" null="NO" default="0"/>
+        <field name="CEE" type="smallint(6)" null="NO" default="0"/>
+        <field name="Ab_Iva_Default" type="smallint(6)" null="NO" default="0"/>
+        <field name="Ab_Iva_Default_Passiva" type="smallint(6)" null="YES" default=""/>
+        <field name="Json_Dati_Iva" type="text" null="YES" default="0"
+               comment="vett_parametri[natura] vedi config_dati_iva"/>
+        <field name="Data_Obsoleto" type="date" null="YES" default='NULL'/>
+
+        <index name="PRIMARY">
+            <field name="Cod_Iva" seq="1"/>
+        </index>
+
+    </table>
+
+
+    <table name="api_tokens" engine="InnoDB" charset="utf8mb4" collation="utf8mb4_general_ci" dbobject="" group="opengerp/core">
+        <field name="id_api_token" type="int(11) unsigned" null="NO"  primary_key="yes" extra="auto_increment"/>
+        <field name="uid" type="char(32)" null="NO" default="" unique="YES"/>
+        <field name="user_id" type="int(11) unsigned" null="NO" default="0"/>
+        <field name="name" type="varchar(100)" null="NO" default=""/>
+
+        <!-- SHA-256 hex = 64 chars -->
+        <field name="token_hash" type="varchar(64)" null="NO" default=""/>
+
+        <!-- JSON: ["events:read","venues:read"] -->
+        <field name="scopes" type="json" null="NO" />
+
+        <!-- opzionale: piano/limiti -->
+        <field name="rpm" type="smallint(5) unsigned" null="YES" default=""/>
+        <field name="rpd" type="int(10) unsigned" null="YES" default=""/>
+
+        <field name="created_at" type="datetime" null="NO" default="CURRENT_TIMESTAMP"/>
+        <field name="last_used_at" type="datetime" null="YES" default=""/>
+
+        <field name="expires_at" type="datetime" null="YES" default=""/>
+        <field name="revoked_at" type="datetime" null="YES" default=""/>
+
+        <field name="ip_last" type="varchar(45)" null="YES" default=""/>
+        <field name="ua_last" type="varchar(255)" null="YES" default=""/>
+
+        <index name="idx_api_tokens_user" type="index">
+            <col name="user_id"/>
+        </index>
+
+        <index name="idx_api_tokens_token_hash" type="unique">
+            <col name="token_hash"/>
+        </index>
+
+        <index name="idx_api_tokens_status" type="index">
+            <col name="revoked_at"/>
+            <col name="expires_at"/>
+        </index>
+    </table>
+
+
+
 </schema>
 
