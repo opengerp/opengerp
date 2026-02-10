@@ -45,13 +45,42 @@ abstract class Mapper
 
     public function buildFromArray($vett_dati)
     {
+
+        $reflection = new \ReflectionClass($this);
+
         foreach ($vett_dati as $k => $v) {
 
-            if (property_exists($this, $k)) {
-                $this->$k = $v;
+            if (!property_exists($this, $k)) {
+                continue;
             }
-        }
 
+            $prop = $reflection->getProperty($k);
+
+            // Se la property è typed e ammette null -> passa null (tipicamente quando arriva '' da form)
+            $type = $prop->getType();
+            if ($type !== null && $type->allowsNull() && ($v === null || $v === '')) {
+                $this->$k = null;
+                continue;
+            }
+
+            // Cast base per typed properties (int/float/bool/string)
+            if ($type instanceof \ReflectionNamedType) {
+                $tname = $type->getName();
+
+                if ($tname === 'int') {
+                    $v = (int) $v;
+                } elseif ($tname === 'float') {
+                    $v = (float) $v;
+                } elseif ($tname === 'bool') {
+                    // gestisce "0","1","true","false","on","off"
+                    $v = filter_var($v, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) ?? false;
+                } elseif ($tname === 'string' && $v !== null) {
+                    $v = (string) $v;
+                }
+            }
+
+            $this->$k = $v;
+        }
     }
 
 
