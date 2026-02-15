@@ -52,7 +52,7 @@ class CreateOpenapiYamlCommand extends Command
         }
 
         // Output
-        $outDir = $path . 'public/doc';
+        $outDir = $this->root . 'public/doc';
         $outFile = $outDir . '/openapi.yaml';
 
         // Crea cartella output se manca
