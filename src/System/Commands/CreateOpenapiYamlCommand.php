@@ -16,10 +16,13 @@ class CreateOpenapiYamlCommand extends Command
     protected static $defaultName = 'openapi-create-yaml';
     protected static $defaultDescription = 'Crea openapi yaml';
 
-    protected string $path;
+    protected string $path; // example lib/Gerp
 
-    public function __construct($path)
+    protected string $root; // prefix root path
+
+    public function __construct($root, $path)
     {
+        $this->root = $root;
         $this->path = $path;
 
         parent::__construct();
@@ -42,7 +45,7 @@ class CreateOpenapiYamlCommand extends Command
         $this->requirePhp('8.1.0');
 
         // Directory da scansionare
-        $scanDir = $path . 'lib/Gerp/';
+        $scanDir = $this->root . $path;
         if (!is_dir($scanDir)) {
             $output->writeln("<error>Directory {$scanDir} not found</error>");
             return Command::FAILURE;
