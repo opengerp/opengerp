@@ -92,7 +92,7 @@ class SchemaUpdater
                         $str_sql .= " NOT NULL";
                     }
 
-                    if (isset($children['default']) && $children['type']!='text') {
+                    if (isset($children['default']) && ($children['type']!='text' && $children['type']!='longtext') ) {
 
                         if ($children['default'] == 'CURRENT_TIMESTAMP') {
                             $str_sql .= " DEFAULT $children[default] ";
