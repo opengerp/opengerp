@@ -323,6 +323,28 @@
 
     </table>
 
+    <table name="COG_Piano_Conti" config="true" dbobject="AccountsChart" group="opengerp/accounting">
+        <field name="Cod_Conto" type="varchar(50)" null="NO" default="" primary_key="yes"/>
+        <field name="Des_Conto" type="varchar(255)" null="NO" default=""/>
+        <field name="Cod_Conto_Padre" type="varchar(50)" null="YES" default="" />
+        <field name="Cod_Conto_Mastro" type="varchar(50)" null="YES" default=""/>
+        <field name="Flg_Elementare" type="smallint(6)" null="NO" default="0"/>gg
+        <field name="Natura_Conto" type="char(20)" null="NO" default=""/>
+        <field name="Natura_Mastro" type="char(1)" null="YES" default=""/>
+        <field name="Cod_Conto_Cee" type="varchar(50)" null="YES" default=""/>
+        <field name="Cod_Conto_Rateo_Attivo" type="varchar(50)" null="YES" default=""/>
+        <field name="Cod_Conto_Rateo_Passivo" type="varchar(50)" null="YES" default=""/>
+        <field name="Cod_Conto_Risconto_Attivo" type="varchar(50)" null="YES" default=""/>
+        <field name="Cod_Conto_Risconto_Passivo" type="varchar(50)" null="YES" default=""/>
+        <field name="Tipo_Conto" type="int(11)" null="YES" default=""/>
+        <field name="Json_Conto" type="text" null="YES" default=""/>
+
+
+        <index name="PRIMARY">
+            <field name="Cod_Conto" seq="1"/>
+        </index>
+
+    </table>
 
     <table name="DOC_Iva" config="true" dbobject="TaxCodes" group="opengerp/accounting">
         <field name="Cod_Iva" type="varchar(20)" null="NO" default="" primary_key="yes"/>
